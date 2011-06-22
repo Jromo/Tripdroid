@@ -1,0 +1,193 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\begin{document}
+\begin{titlepage}
+\begin{minipage}{12cm} Universidad de Chile
+\\ Facultad de Ciencias F\'isicas y Matem\'aticas
+\\ Departamento de Ciencias de la Computaci\'on\\
+\\
+\end{minipage}
+\vspace*{2cm}
+\begin{center}
+\vspace{0.2cm}
+{\Huge\bf\vspace{0.5cm} Informe de Trabajo Dirigido}\\
+{\Huge\bf\vspace{0.5cm} Desarrollo de una Aplicación con Georreferenciación para Android}\\
+\end{center}
+\vspace{4cm}
+\begin{tabular}{ll}
+\bf{Nombre Alumno :}& Jorge Romo \\
+\bf{Carrera:} & Ingeniería Civil en Computación\\ 
+\bf{Profesor:} & Wolfram Luther  \\ 
+\bf{Correo Electrónico:} & jorromo@ing.uchile.cl  \\ 
+\bf{Fecha:} & 22 de Noviembre de 2010  \\ 
+\end{tabular}
+\end{titlepage}
+\newpage
+\tableofcontents
+\setcounter{tocdepth}{1}
+
+\newpage
+\section{Abstract}
+
+Este proyecto tuvo su inicio como una idea para participar en el Concurso Universitario de Aplicaciones para Android realizado por Cursor Labs, posteriormente, viendo los buenos resultados que obtuvo el proyecto en el concurso (2do lugar), y el interés sucitado por el mismo entre los otros participantes, profesores, y además entre alumnos de la Escuela de Verano de la Universidad de Chile, a quienes se les realizó una presentación acerca de la aplicación, se estimó que el proyecto tiene bases para continuar, y para ello, se reformularon los objetivos y la propuesta como tal.\\
+
+Se decidió comenzar realizando una encuesta a distintos usuarios que estuviesen dentro del público objetivo de la aplicación, para luego, a partir de los resultados obtenidos, elaborar un prototipo que permitiese realizar un estudio de usabilidad del mismo para reformular los objetivos y el enfoque de la aplicación de acuerdo a los resultados del mismo.\\
+
+A continuación se presentan, en primer lugar, los resultados de la encuesta para luego describir detalladamente la propuesta de aplicación, y finalmente, qué será lo que se implementará como prototipo de esa aplicación para que sea probado por los usuarios.\\
+
+
+\newpage
+\section{Introduction}
+
+This paper is a research and development on 3D sound, in particular, about what it is, what it is, the technology exists, 3d sound program, and the development of a project using this technology.\\
+
+To do this, first described what 3D sound, as perceived by humans biologically, then study about technology designed to emulate this behavior and have digital 3D sound.\\
+
+Subsequently, deepen about the libraries used to develop the project, which is a small application that allows users to identify the source from which came the sound he heard, and to hear a complete environment for 3D sound.\\
+
+Finally, we talk about the future that could have the application and the conclusions drawn from the development of it, and the topic of 3D sound in general.\\
+
+\newpage
+\section{Content}
+
+\subsection{About 3D Sound}
+
+Sound is a mechanical wave that is an oscillation of pressure transmitted through a solid, liquid, or gas, composed of frequencies within the range of hearing and of a level sufficiently strong to be heard, or the sensation stimulated in organs of hearing by such vibrations.\\
+
+Humans could perceive sound by three information sources:\\
+\begin{itemize}
+\item \textbf{Lateral information (left, ahead, right)}\\
+For determining the lateral input direction (left, front, right) the auditory system analyzes the following ear signal information:\\
+\begin{itemize}
+    \item Interaural time differences
+    \item Sound from the right side reaches the right ear earlier than the left ear. The auditory system evaluates interaural time differences from:\\
+\begin{itemize}
+          \item Phase delays at low frequencies
+          \item group delays at high frequencies
+\end{itemize}
+    \item Interaural level differences
+\end{itemize}
+
+
+\item \textbf{Sound localization in the median plane (front, above, back, below)}\\
+The impact of a shock wave can register perceptibly on the skin (typically the upper torso), with the earliest and strongest sensory stimulus coming from the regions of skin aligned perpendicular to the direction of the sound source.
+
+\item \textbf{HRTF}\\
+
+The human head imprints frequency-dependent distortions of phase and amplitude on sound reaching the eardrums, that are frequency-dependent level differences and these distortion effects vary with the direction of the sound source (being caused by the geometry and sound-transmitting characteristics of the sinus and throat cavities, eustachian tubes, inner ear, external ears, and other hard and soft tissues in the head and upper body (see: head-related transfer function, "HRTF").\\
+\end{itemize}
+
+\newpage
+\begin{figure}[h] %[h] para here [b] para bottom [t] para top
+\hspace{-1cm}
+\includegraphics[width=400]{./hrtf.jpg}
+\caption{HRTF}
+\end{figure}
+
+
+Furthermore, humans have developed culture and technology (such as music, telephone and radio) that allows them to generate, record, transmit, and broadcast sound.\\
+
+
+\subsection{Sound Technology}
+
+\textbf{Monaural or monophonic sound reproduction} (often shortened to mono) is single-channel reproduction
+
+\textbf{Stereophonic sound}, commonly called stereo, is the reproduction of sound using two or more independent audio channels through a symmetrical configuration of loudspeakers in such a way as to create the impression of sound heard from various directions, as in natural hearing
+
+\textbf{Binaural recording}, is a method of recording sound in wich the sound signal is processed trying to emulate the HRTF.It uses a simulated dummy head.\\
+\textbf{Simulated dummy head} recording processes a signal electronically to imprint the HRTF information associated with a specified direction.\\
+
+
+\begin{figure}[h] %[h] para here [b] para bottom [t] para top
+\hspace{-1cm}
+\includegraphics[width=400]{./head.jpg}
+\caption{Simulated Dummy Head}
+\end{figure}
+
+Because each person's pinnae are unique, and because the filtering they impose on sound directionality is learned by each person from early childhood, the use of pinnae during recording that are not the same as the ultimate listener may lead to perceptual confusion.\\
+
+\subsection{Programming 3D Sound}
+
+The library chosen to develop the application was OpenAL because it is independent of the operating system, is that there is more information and examples on the Internet, which was important considering the development time.\\
+
+Notably, it was difficult to find examples in general, whether for OpenAL, DirectX that will use 3D sound, also, we also found many examples developed or open source for Blender or other famous 3D modeling frameworks, so it seems an issue that has a great development in general, in fact, most examples found were programs that were not intended to investigate or principal use of 3D sound capabilities, but they were a complement to a major application, in general, a video game.\\
+
+Having decided to use OpenAL, the next complication was found in OpenAL libraries to program using Java, that language was chosen because it has a good level of knowledge in it, and considering the time available for development, it was best to work well known language.\\
+
+There are many libraries for programming in Java 3D sound, however, there was great difficulty in installing them, or there were no previous examples or developments to be used as a guide, as in the case of Java3D. In addition, another problem presented is that many libraries are still developing and does not play sounds with so much quality, so unless you have a system or appropriate place to listen to 3D sound, is very difficult to distinguish the characteristics of sound, which was the objective of this research.\\
+
+It was decided to use 2 libraries, given that it was not possible to use the full functionality of any by itself, they are JOAL and Lightweight Java Game Library, for which also found a reasonable amount, but not too much of examples.\\
+
+\subsection{The Project}
+
+The original idea was to develop a game like Simon Says but consisted of repeating the sequence of sound sources. However, distinguishing, for example, between a sound from above or below is extremely difficult unless you have a sound well suited for the application.\\
+
+Using headphones, after several tests it was found that is fairly easy to distinguish between sounds in the x-axis (side information), and greater difficulty can distinguish some sounds in the shaft and, finally, to distinguish the location of sound in the z axis is almost impossible.\\
+
+Therefore, be modified somewhat the project, giving the user the option to experiment with 3D sound, but also included a small idea of the game, and an example of 3D sound as a bonus.\\
+
+\subsubsection{Project features}
+
+The project has 3 features:\\
+
+\textbf{Play Sound Button: }There is a user interface that is seen from above, by clicking on the button plays a sound at a random location around the user, showing where the sound came over him.\\
+
+\textbf{Guess Button: }It's the same functionality of the already described, but this time it leaves room for user to click on the place where you create a sound.\\
+
+\textbf{Battle button:} Bonus application. Was observed after several trials, if it reproduced the sounds (in this case correspond to a bullet and a gun), quickly and randomly, it can emulate a 3D environment of a battle, moreover, it was added background sound for more realism.\\
+
+\newpage
+\begin{figure}[h] %[h] para here [b] para bottom [t] para top
+\hspace{-1cm}
+\includegraphics[width=400]{./juego.png}
+\caption{Application Screenshot}
+\end{figure}
+
+\subsubsection{Programming the Project}
+
+As noted above, were used and lwjgl Joal libraries to the project schedule.\\
+
+Basically, for the reproduction of the sounds we used the functions provided by OpenAL, which let you load into the space, different sound sources, which in this case were the 2 that are used at random.\\
+
+Subsequently, the user is located within the space, and then you can play the sound giving properties of location, direction and speed, thus, random values were used to reproduce sounds at different locations.\\
+
+In addition, the reproduction of sound in a loop, and also randomizing their location and direction values allowed emulate the feel of battle, added to which was added a 3rd source of background noise.\\
+
+\newpage
+\section{Future}
+
+The developed application can serve as an example to initiate development in the world of 3D sound, considering that there are few basic tutorials and examples. In addition, the battle emulated environment, while simple and was easy to program, might well provide a setting for a small game.\\
+
+Regarding the latter, is quite relevant to point out that with little development time achieved a relatively functional programming, and the learning curve, once you have achieved a suitable environment for programming, is not very large, therefore, more investigation the issue is very likely that large applications can be made.\\
+
+Today, most of these applications are for game development, however, the 3D cinema and 3D television is beginning to develop more in that area, or even music videos with 3d sound in fact can be easily found Internet.\\
+
+\newpage
+\section{Closure}
+
+While there are many applications, especially games that use 3D sound, there are very few tutorials or guides or examples of easy access to facilitate the development, also, the libraries are not easy to set up or operating system dependent.\\
+
+However, it is noteworthy that the program itself is fairly simple, and has a very small learning curve, so the development of applications using this feature ought not be difficult after overcoming the drawbacks mentioned.\\
+
+It is striking that throughout the investigation and development of the project, all the examples found were experimental or video games, or in rare cases, designed for musical pieces, and were generally small examples, not great based 3d sound applications, but used it as another feature. This is noted because it draws attention not been met, for example, with applications designed for blind or hearing impaired people, etc.\\
+
+Therefore, seems important, for example, the future we may have the cinema and 3D television using this feature, as it could allow a better perception of what happens to people who are visually impaired.\\
+
+\newpage
+\section{References}
+
+\begin{itemize}
+\item OpenAL programmers guide
+\item Wikipedia, the free encyclopedia
+\item Lightweight Java Library Game demos
+\item OpenAL Devmaster.net Lessons                            
+\end{itemize}
+
+
+\end{document}

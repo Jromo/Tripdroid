@@ -1,0 +1,459 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+
+
+
+\begin{document}
+\begin{titlepage}
+\begin{minipage}{12cm} Universidad de Chile
+\\ Facultad de Ciencias F\'isicas y Matem\'aticas
+\\ Departamento de Ciencias de la Computaci\'on\\
+\\
+\end{minipage}
+\vspace*{2cm}
+\begin{center}
+\vspace{0.2cm}
+{\Huge\bf\vspace{0.5cm} Informe de Trabajo Dirigido}\\
+{\Huge\bf\vspace{0.5cm} Desarrollo de una Aplicación con Georreferenciación para Android}\\
+\end{center}
+\vspace{4cm}
+\begin{tabular}{ll}
+\bf{Nombre Alumno :}& Jorge Romo J. \\
+\bf{Carrera:} & Ingeniería Civil en Computación\\ 
+\bf{Profesor:} & Jeremy Barbay  \\ 
+\bf{Correo Electrónico:} & jromo.dcc@gmail.com  \\ 
+\bf{Fecha:} & 22 de Junio de 2011  \\ 
+\end{tabular}
+\end{titlepage}
+\newpage
+\tableofcontents
+\setcounter{tocdepth}{1}
+
+\newpage
+\section{Introducción}
+
+El presente informe consiste en una descripción del trabajo realizado para desarrollar y estudiar la usabilidad de una aplicación para el sistema operativo Android, que utilice georreferenciación como base de la misma.\\
+
+Este proyecto tuvo su inicio como una idea para participar en el Concurso Universitario de Aplicaciones para Android realizado por Cursor Labs, posteriormente, viendo los buenos resultados que obtuvo el proyecto en el concurso (2do lugar), y el interés sucitado por el mismo entre los otros participantes, profesores, y además entre alumnos de la Escuela de Verano de la Universidad de Chile, a quienes se les realizó una presentación acerca de la aplicación, se estimó que el proyecto tiene bases para continuar, y para ello, se reformularon los objetivos y la propuesta como tal.\\
+
+Se decidió comenzar realizando una encuesta a distintos usuarios que estuviesen dentro del público objetivo de la aplicación, para luego, a partir de los resultados obtenidos, elaborar un prototipo que permitiese realizar un estudio de usabilidad del mismo, para reformular los objetivos y el enfoque de la aplicación de acuerdo las conclusiones obtenidas, a partir de las opiniones recibidas por los usuarios.\\
+
+A continuación se presentan, en primer lugar, el objetivo general de la aplicación, una descripción de las aplicaciones de este tipo ya existentes, los resultados de la encuesta previa realizada a los usuarios, para luego describir detalladamente la propuesta de prototipo de la aplicación, los resultados del estudio de usabilidad del mismo, y los avances en un segundo prototipo basado en dichos resultados. Además, se describe a grandes rasgos lo que se pretende realizar a futuro en este proyecto, fuera del alcance de este trabajo dirigido.\\
+
+\newpage
+\section{Descripción del Problema y Objetivo General de la Aplicación}
+
+Existen muchas aplicaciones que utilizan la georeferenciación en los smartphones y/o tablets, no obstante, ninguna de ellas logra dar información que los usuarios consideren confiable, o bien, si lo hacen, se debe sacrificar la interación de los usuarios con la misma o sus posibilidades de aportar información a la misma aplicación, o incluso se pierde el objetivo para el cual fueron concebidas, es decir, los usuarios las utilizan de una forma que claramente no era la deseable.\\
+
+Lo que se busca mediante la aplicación a desarrollar, es tener un buen balance entre permitir a los usuarios aportar información para mejorar la aplicación, que obtengan beneficios dentro de la misma a medida que colaboren, pero garantizando que la información aportada sea confiable.\\
+
+Para ello, la propuesta es que los mismos usuarios realicen la validación del contenido al utilizar la aplicación, mediante la resolución de desafíos que consistan en preguntas que permitan validar si la información aportada por otros usuarios es correcta.\\
+
+A continuación se describen aplicaciones con georreferenciación frecuentemente usadas (como se ve en la encuesta previa, más adelante), resumiendo sus ventajas y desventajas, para reflejar lo descrito anteriormente:\\
+
+\subsection{Aplicaciones con Georreferenciación}
+
+\begin{itemize}
+ 
+\item \textbf{Foursquare}\\
+
+La aplicación tiene el objetivo de dar a conocer lugares, y que los usuarios los evalúen dándoles puntaje, utilizando la georreferencia para comprobar que los usuarios efectivamente estuviesen ahí. Para motivar a los usuarios a usar la aplicación, ésta otorga medallas o categorías de “alcalde” de un lugar, lo cual se puede compartir a través de las distintas redes sociales. No obstante, esto lleva a que finalmente se pierda el objetivo inicial de la aplicación, ya que en general los usuarios intentan ir muchas veces a un mismo lugar para ser alcades, o crean lugares nuevos para ganar medallas, por lo cuál muchas veces no se utiliza de la manera esperada.\\
+
+\textbf{Features:}\\
+\begin{itemize}
+\item Puntaje y comentarios de los lugares
+\item Agregar nuevos lugares
+\item Marcar lugares como visitados
+\item Obtención de medallas por visitar lugares
+\item Se puede compartir los lugares visitados por las redes sociales
+\end{itemize}
+
+\textbf{Limitaciones:} No existe ningún tipo de validación de los lugares agregados, puedo visitar varias veces el mismo lugar (incluso mi propia casa), para intentar obtener medallas.
+
+\item \textbf{Google Maps}\\
+
+Además de servir como un mapa, muestra lugares destacados como restaurants, sitios históricos, etc. y también servicios tales como el Metro. No obstante, se utiliza más para ubicarse, encontrar calles, saber donde se está, etc. que para dar a conocer nuevos sitios, o saber que lugares visitar.\\
+
+\textbf{Features:}
+\begin{itemize}
+\item Datos de casi todos los servicios de las ciudades, clasificación muy minuciosa de los mismos.
+\item Distintas vistas de la ciudad (satelital, calles, etc.)
+\item Permite realizar búsquedas por dirección en el mapa
+\item Se pueden agregar fotos de lugares
+\item Se puede realizar "check-in" o rankear lugares visitados
+\end{itemize}
+
+\textbf{Limitaciones:} Existen alternativas Open Source locales más precisas (Ej: Open Street Map, grupo en Chile: http://www.openstreetmap.cl/). No existe validación para las fotos que se agregan, no hay premios ni incentivos para que el usuario realice aportes. En general, es una aplicación más orientada a "ver" el mapa para ubicarse, que a buscar interacción de algún tipo con el usuario, por lo mismo, la información de ubicación de lugares que tiene, es altamente confiable, por lo que es muy usada.\\
+
+\item \textbf{Ovi Maps}
+
+\textbf{Features:}
+\begin{itemize}
+\item Mapas Descargables, ya sea por WiFi al usarlo en el equipo móvil, o bien descargándolos en un pc de escritorio y subiéndolos al celular, ambas alternativas permiten que pueda funcionar en Modo Offline.
+\item Búsqueda de direcciones
+\item Utilización de GPS como sistema de navegación
+\item Compartir localizaciones mediante redes sociales
+\item Opción de programar alertas vibrantes
+\end{itemize}
+
+\textbf{Limitaciones:} No existe forma de que los usuarios aporten nuevos lugares, o de evaluación y recomendaciones de los mismos.\\
+
+\item \textbf{RunKeeper}\\
+
+Aplicación orientada a deportistas, en particular corredores, que permite guardar las rutas realizadas. Éstas se pueden compartir y comparar con otros usuarios de la aplicación, de tal forma que se puede, por ejemplo, realizar desafíos de tiempo para una ruta en particular.\\
+
+\item \textbf{SCVNGR}\\
+
+Aplicación que permite a los usuarios resolver desafíos ubicados en distintos lugares (Locales de comida, universidades, plazas, etc.), los cuales son proporcionados por la empresa que ocupa el lugar, y a cambio de resolverlos se obtienen medallas o premios reales como descuentos en el local.\\
+\textbf{Ejemplo:} McDonalds pone un desafío en uno de sus locales. La interfaz de la aplicación indica que hay un desafío en el local, y al hacer click aparece un origami, si vas al local y sacas una foto con tu móvil de la servilleta con el origami hecho, tienes una bebida gratis.\\
+\textbf{Limitaciones:} Los lugares disponibles, y por supuesto, los desafíos, son impuestos por las empresas, los usuarios no pueden agregar nuevos lugares o desafíos.
+\end{itemize}
+
+\newpage
+\section{Objetivos del Trabajo Dirigido}
+
+El Objetivo del presente trabajo es realizar un estudio acerca de la aplicación de geolocalización Tripdroid, para determinar el enfoque que se le debe dar y las características que debe tener. Esto mediante la opinión de los usuarios, y la elaboración de prototipos para obtener nuevas opiniones basadas en la aplicación en sí, y los avances que vaya teniendo esta.\\
+
+Así se puede concluir, mediante un estudio de usabilidad del prototipo, si la orientación escogida para la aplicación mediante los resultados de la encuesta preliminar es la correcta, obtener nuevas ideas de parte de los usuarios, y analizar que funcionalidades utilizan más, luego, a partir de todos estos datos se puede elaborar un segundo prototipo mejor enfocado en lo que desea el usuario.\\
+
+\newpage
+\section{Encuesta Previa}
+
+Se realizó una encuesta a 30 usuarios, de los cuales 16 tienen Smartphone, es decir, un teléfono con más aplicaciones que un celular común (multitarea, acceso a internet vía WiFi o 3G, dispositivos extra como cámara, acelerómetro, GPS, etc.), y el resto, al menos utiliza internet en su celular, y además, se cuenta con 7 usuarios expertos (es decir, con algún tipo de experiencia en desarrollo de aplicaciones móviles).\\
+
+La encuesta tuvo 2 preguntas cuantitativas, la primera sobre que aplicaciones móviles con geolocalización han utilizado los usuarios y otra acerca de qué características valorarían más dentro de una aplicación de este estilo. El resto de las preguntas solicitaba información cualitativa acerca de sus preferencias sobre una aplicación de geolocalización, y su opinión sobre las actuales.\\
+
+La encuesta fue enviada vía correo electrónico y se pensó con el objetivo de obtener una opinión acerca de qué esperaría un usuario de una aplicación de este estilo, sin dar a conocer la idea del proyecto a desarrollar.\\
+
+A continuación se describen y analizan los resultados obtenidos de la encuesta.\\
+
+\subsection{Resultados Cuantitativos}
+
+Número de personas que seleccionaron las alternativas señaladas, entre paréntesis se destaca cuantos de los usuarios que seleccionaron esa alternativa, corresponden a usuarios expertos. Las opciones están ordenadas por la cantidad de gente que las seleccionó (de mayor a menor).\\
+
+\textbf{Que consideras (o considerarías) más importante en una aplicación de este estilo?}\\
+
+\begin{itemize}
+\item Entregar Información de los lugares \textbf{21(7 Expertos)}
+\item Confiabilidad de la Información \textbf{19(6 Expertos)}
+\item Rapidez de la Aplicación \textbf{17(3 Expertos)}
+\item Recomendar lugares (restaurantes, museos, etc.) \textbf{15 (5 Expertos)}
+\item Poder aportar información o características a la aplicación \textbf{6(3 Expertos)}
+\item Desafíos (competencias entre usuarios, obtener premios, etc.) \textbf{6(2 Expertos)}
+\item Permitir compartir con redes sociales \textbf{4(1 Experto)}
+\item Poder aprender utilizándola (valor educativo) \textbf{3(1 Experto)}
+\end{itemize}
+
+\textbf{Usas alguna aplicación que use geolocalización? (Es decir, que se use el lugar físico donde estás, como Google Maps, Foursquare, Gowalla, etc.)}
+
+\begin{itemize}
+\item Google Maps(21)
+\item Ninguna(9)
+\item Foursquare(4)
+\item Ovi Maps(1)
+\item RunKeeper(1)
+\end{itemize}
+
+%\newpage
+%\begin{figure}[h] %[h] para here [b] para bottom [t] para top
+%\hspace{-1cm}
+%\includegraphics[width=400]{./hrtf.jpg}
+%\caption{HRTF}
+%\end{figure}
+
+\subsection{Resultados Cualitativos}
+
+En este caso, en la encuesta existe una pregunta acerca de las aplicaciones ya existentes, y otra para obtener feedback sobre el proyecto en sí.\\
+
+Se muestran las respuestas más interesantes o frecuentes dadas por los usuarios.\\
+
+\subsubsection{Sobre Aplicaciones Actuales}
+
+Se le solicitó a los usuarios su opinión sobre Aplicaciones actuales de este estilo, y se resumen a continuación algunas opiniones, al menos las más similares entre la mayoría:\\
+
+\textbf{No me Gusta:}\\
+
+\begin{itemize}
+\item Consumen mucha batería
+\item Algunas funcionan con A-GPS y otras no
+\item Dan mucha información inútil
+\item No aparece información sobre los servicios del Metro
+\item Es difícil encontrar la información que uno requiere
+\item Poca Privacidad
+\item Mala Interfaz
+\end{itemize}
+
+\textbf{Me Gusta:}\\
+
+\begin{itemize}
+\item Combinan la realidad física con una aplicación virtual
+\item Rapidez para buscar lugares (en particular, Foursquare)
+\item Práctico, se encuentra finalmente lo que se busca
+\item Se ve de inmediato en un mapa donde se está
+\item Integración con Brújula para saber donde voy
+\end{itemize}
+
+\subsubsection{Sobre el Proyecto}
+
+A continuación se muestran los principales comentarios dados por los usuarios en la encuesta, en las preguntas que involucraban opinar acerca del proyecto. Los resultados están ordenados desde los comentarios que más veces se repitieron a los que menos.\\
+
+\begin{itemize}
+\item Recomendación Colaborativa de lugares \textbf{3(1 Experto)}
+\item Recomendar lugares de acuerdo a los gustos del usuario (según el tipo de lugares que suele visitar)  \textbf{3(1 Experto)}
+\item Que se vean opiniones de otras personas sobre los lugares \textbf{3(1 Experto)}
+\item Juego simple, el menor tiempo posible en el equipo \textbf{3}
+\item Buscar una dirección y saber que hay cerca (sin necesidad de estar ahí) \textbf{2(2 Expertos)}
+\item Recomendar lugares según el contexto (momento del día, sector en que está el usuario) \textbf{2(1 Experto)}
+\item Información/valor histórico del lugar en que estás \textbf{2(1 Experto)}
+\item Mostrar y/o poder agregar fotos de los lugares \textbf{2(1 Experto)}
+\item Interactuar con otros usuarios de la app que estén cerca \textbf{2}
+\item Agregar el Metro, Cajeros Automáticos, Centros Bip \textbf{2}
+\item Privacidad \textbf{2}
+\item Realizar una versión más “turística” y una más “educativa” \textbf{1(1 Experto)}
+\item Usar la brújula \textbf{1(1 Experto)}
+\item Incluir datos sobre el Clima según ubicación \textbf{1}
+\item Tener registrados tiendas, almacenes y precios \textbf{1}
+\item Mostrar ruta de lugares ya visitados \textbf{1} 
+\item Poder dibujar encima(tener capas guardadas con dibujos, incluso puede ser colaborativo) \textbf{1}
+\end{itemize}
+
+%\begin{figure}[h] %[h] para here [b] para bottom [t] para top
+%\hspace{-1cm}
+%\includegraphics[width=400]{./head.jpg}
+%\caption{Simulated Dummy Head}
+%\end{figure}
+
+\subsection{Análisis de Resultados}
+
+Se observa que en general los usuarios tienen interés por obtener datos útiles para ellos, es decir, información sobre los lugares que les interesen, recomendaciones, conocer la ubicación de distintos servicios, etc. Además de valorar bastante la confiabilidad de la información que se les entrega, y la rapidez de la aplicación en sí (considerando también como rapidez el hecho de que no requiera estar mucho tiempo atento al equipo para usar la aplicación), todos estos aspectos, que fueron los más votados, se condicen con las opiniones recibidas, ya que los usuarios recomendaron que la aplicación requiera estar poco tiempo mirando el equipo, que permitiera comentar sobre los lugares además de dar información, que recomiende lugares de acuerdo a los gustos del usuario, etc.\\
+
+Llama la atención el poco interés por el aspecto social de una aplicación así, y de hecho, valorar la privacidad de la misma, por lo cual se estima que este debe ser un aspecto importante para los usuarios cuando se trata de saber donde están ubicados.\\
+
+\subsection{Opiniones Posteriores}
+
+Luego de la realización de la encuesta, se le pidió su opinión a algunos usuarios luego de leer este informe preliminar acerca de la aplicación, y así obtener feedback de su parte, que se presenta a continuación.\\
+
+\textbf{Usuario 1:}\\
+
+Creo que lo más importante en las aplicaciones de este tipo es la información que entrega y la confiabilidad de esa información, de nada sirve tener una cantidad inmensa de lugares en los que se pueda explorar si no hay información importante con respecto a esos lugares, asi como también es importante que la información esté actualizada ya que a veces es común encontrarse con lugares que no se encuentran donde se menciona en las aplicaciones, esto debido a los cambios que la gente va realizando. Con respecto al último punto se puede señalar también que es un defecto de las aplicaciones de geolocalización el que exista duplicidad de lugares, es común ir a algún lugar frecuente como alguna estación de metro o alguna facultad se pueden observar lugares con nombres similares o repetidos, que simplemente no aportan mayor información a la aplicación.\\
+
+Uno de los principales problemas encontrados más allá del tema de la interfaz, es el tema de consumo de la batería del gps y la propia exactitud del dispositivo al momento de encontrar lugares, son problemas que podrían ocurrir en aplicaciones de este tipo que tienen que ser consideradas al momento de desarrollar la aplicación, ya que son las principales críticas que se realizan en el tema de navegación.\\
+
+Con respecto a la interfaz también se requiere una aplicación que tenga acceso sencillo, rápido y sea intuitivo su uso, que no complique las funciones y tenga un diseño simple, en términos de usabilidad, principalmente la idea es poder acceder de manera rápida a las necesidades particulares del usuario, en cuanto a búsqueda y exploración de lugares.\\
+
+En términos de integración con otras aplicaciones, hay que tratar de definir ciertos alcances, como por ejemplo redes sociales, que es lo que se busca transmitir y si simplemente será necesaria la función de compartir ciertas locaciones, si se pueden incorporar datos adicionales, más allá de compartir un link o un anotación referenciada a un lugar en particular. Se tiene que ver la forma en que se puede motivar a los usuarios finales para poder ir compartiendo los lugares a medida que vayan siendo explorados, más allá de un juego de recolección de medallas (como podría ser el caso de SCVNGR o foursquare que ya ofrecen una dinámica similar) asi como también sería bueno ir integrando las funcionalidades con valoraciones (como es el caso de Google Hotpot (Places)) o integrarlo con imagenes (como gowalla), la idea es poder ir generando una base amplia de información y que a la vez sea util, integrada, de fácil acceso a través de una interfaz simple.\\
+
+La idea de los desafíos también está ligada al foco de SCVNGR que posee sus propios desafíos de georeferenciación y los mismos usuarios pueden ir incorporando, con lo que se puede desarrollar algo que vaya en la línea de esa aplicación, si se quiere integrar el desarrollo a través de los desafíos y la exploración de lugares.\\
+
+Sería bueno en el futuro poder agregar soporte a tecnologías NFC (Near Field Communication) o bluetooth dependiendo de las cercanías con ciertos locales, además de los clásicos especiales y alianzas estratégicas con proveedores que permitan generar ofertas a través de los check-in que se puedan generar a través de la aplicación.\\
+
+También es importante presentar facilidad para poder administrar lugares, asi como también seguridad que permita mantener información confiable sin que sea alterada por terceros, localización de lugares cercanos y generación de filtros de exploración, de tal manera que pueda presentar mayor facilidad frente a la búsqueda.\\
+
+Hay muchas opciones más y otras formas para poder aprovechar el uso de la georeferenciación pero por ahora esos son los comentarios básicos, en general es una integración de lo mejor de los diferentes servicios actuales.\\
+
+\textbf{Usuario 2:}\\
+
+\textbf{Idea general:}\\
+
+Desafíos validación: ¿Quién los hace? ¿Quién valida los desafíos de validación? ¿Acá a lo mejor tendría sentido lo de los tipos con más puntos? Creo que si la responsabilidad cae en los administradores es muy restringido.\\
+
+\textbf{Lugares:}\\
+
+\textsl{Culturales:} ¿Qué hace exactamente a un lugar como ``cultural``? ¿O quién/cómo se ``acepta'' que un lugar sea cultural?
+\textsl{Servicios:} cómo podría saber la ``calidad`` del servicio. O sea, para servicios como cajero automático puede que no aplique tanto, pero quizás sería interesante saber otro tipo de información como por ejemplo si es un lugar peligroso o hay muchos robos en determinado cajero. Quizás una opción de dejar comentarios.\\
+
+No me queda clara la idea de la distancia a un lugar como criterio de validación. Creo que es demasiado difícil que alguien vaya a un lugar muy lejano a validar algo. Sin embargo, de acá surge la idea de guardar los desafíos para poder completarlos después.\\
+
+\textbf{Validación:}\\
+
+\textsl{Validación de tags:} Quiźas sería útil una modalidad en que puedes seleccionar los tags a validar y los que no, para no descartar por completo la pregunta.\\
+
+\textsl{Validación de información:} ¿Cómo está dispuesta la información? En esta parte dice que se validan por párrafos, ¿qué pasa con la integridad de la información? ¿Es una especie de Wikipedia? Considerando la idea de tags y desafíos, quizás sería útil tener información "inteligente". Además facilitaría la creación de desafíos automáticos.\\
+
+\textsl{Escala de puntaje:} Aunque aún no está definida, considerando la variedad de lugares, sería interesante tener puntajes por categorías. O sea, puntaje por ubicación, por calidad de servicio, etc. Como las estrellas en los hoteles.\\
+
+\textbf{Premios:}\\
+
+\textsl{Puntaje:} en lo personal, no me gusta la idea de mayor acceso a información con más puntaje, considerando que es una aplicación colaborativa, prefiero la accesibilidad a features.
+\textsl{Plugins:} ¿Como es este plugin de dibujo? ¿Es desechable? ¿Los usuarios podrán guardar sus dibujos? Similar a los mapas que se pueden guardar en google maps.
+
+\newpage
+\section{Aplicación Propuesta}
+
+\subsection{Descripción General}
+
+Basado en los resultados de la encuesta, se elaborará un prototipo de la aplicación de modo que muestre lugares de interés y recomiende otros, y para el aspecto de la confiabilidad de dicha información, se utilizará una validación colaborativa de esta con los mismo usuarios.\\
+
+Es decir, a grandes rasgos, la ubicación permitiría al usuario, observar distintos lugares en el mapa y ver su información (es decir, un acceso a datos base), además de poder comentar, proponer nuevos lugares, etc. 
+Y también, el usuario recibiría desafíos, que consistirían en tareas de validación, es decir, verificar la ubicación de un lugar, que los tags de un lugar correspondan, etc. de modo que dichas validaciones (resolver desafíos), permitan al usuario tener mayor acceso a datos, ganar puntos, u otros beneficios a determinar.\\
+
+A continuación se describen en detalle estos aspectos.\\
+
+\subsection{Elementos de la Aplicación}
+
+\subsubsection{Lugares}
+
+Por lugares se entiende a todo punto en el mapa que tiene información asociada en el sistema.\\
+
+Un Lugar posee como atributos:\\
+
+\begin{itemize}
+ \item \textbf{Nombre} (el nombre del lugar, por Ej: Cerro Santa Lucía.)
+ \item \textbf{Coordenadas GPS} (que determinan el centro de la posición del lugar en el mapa)
+ \item \textbf{Tags} (que definen las características del lugar, por Ej. si es la Plaza de Armas puede tener como tags "plaza", "estatuas", etc.  \item Así se puede filtrar por tags al buscar un lugar)
+ \item \textbf{Comentarios} (opiniones de los usuarios acerca del lugar)
+\end{itemize}
+
+Además existen distintos tipos de lugares que poseen atributos propios.\\
+
+El usuario, al iniciar la aplicación verá el mapa de la ciudad con los lugares marcados por algún ícono, distintivo entre los tipos de lugares que existen.\\
+
+\paragraph{Culturales}
+
+Los lugares del tipo "Culturales", además de los atributos generales de lugar (Nombre, Coordenadas GPS, Tags, Comentarios), poseen los siguientes atributos:\\
+
+\textbf{Información:} Corresponde a una reseña sobre el lugar en sí, sus características, historia, lo que se puede encontrar en él, etc.\\
+
+\paragraph{Servicios}
+
+Los lugares del tipo Servicio, además de poseer los atributos generales de lugar (Nombre, Coordenadas GPS, Tags, Comentarios), se definen con los siguientes atributos:\\
+
+\begin{itemize}
+ \item \textbf{Categoría:} Esto determina qué es exactamente el servicio, la Categoría debería poder tomar un valor entre 'Cajero Automático', 'Casa de Cambio', 'Centro Bip', 'Estación de Metro', etc.\\
+
+ \item \textbf{Compañía:} Depende el tipo de Servicio, puede ser el nombre del Banco, del almacén que tenga el servicio de cargar la Bip!, etc.)\\
+
+ \item \textbf{Estático:} Un valor que indique si difícilmente aparecerán nuevos servicios de este tipo o requerirán validación. Por ejemplo, en el caso de las Estaciones de Metro, se consideran un servicio estático, ya que difícilmente aparezca una estación nueva que se requiera que los usuarios agreguen colaborativamente, asimismo, tampoco es necesario validar la ubicación de las estaciones.\\
+\end{itemize}
+
+\subsubsection{Usuarios}
+
+Se define usuario como cualquier persona que utilice la aplicación y que no sea un administrador de la misma.\\
+
+Los usuarios se determinan de acuerdo a las acciones que pueden realizar en la aplicación, es decir, las distintas features que ésta ofrece a los usuarios.\\
+
+\paragraph{Funcionalidades para el Usuario}
+
+\subparagraph{Acceso a Datos}
+\begin{itemize}
+ \item \textbf{Ver Lugares Cercanos} Por defecto, al iniciar la aplicacion, el usuario verá el mapa centrado en su ubicación actual, con los lugares Culturales y Servicios que estén cerca de él marcados con íconos distintivos sobre éste.\\
+
+Al hacer click a un lugar el usuario podrá ver en una pequeña ventana emergente, el nombre del lugar, y los tags del mismo, y tendrá la opción de ver más información, lo que debería mostrar otra ventana con la información del lugar y los comentarios de los usuarios.\\
+
+Para el primer prototipo, debe estar implementada la vista de los Lugares Cercanos, y que muestre al menos sus tags.\\
+
+ \item \textbf{Buscar Lugares} Además de poder ver la información de los lugares cercanos, el usuario tendrá la opción de buscar lugares de acuerdo a 2 criterios:\\
+
+\begin{itemize}
+\item \textbf{Por Tag:} De modo de recibir una lista de lugares Culturales con su ubicación que correspondan a los tags que está buscando.
+\item \textbf{Por Ubicación:} Buscar una ubicación en el mapa (con algún método a determinar que provea el mapa de Google Maps), y poder ver los lugares de cualquier tipo que hay cerca de la dirección buscada.
+\end{itemize}
+\end{itemize}
+
+\subparagraph{Desafíos}
+
+Por desafíos se entienden las tareas de validación que realizará el usuario. Es decir, tareas solicitadas por el sistema al usuario para verificar la vericidad de datos aportados por otro usuario. Los desafíos son tareas internas de la aplicación, no incluyen juegos sociales, sin embargo, los premios que se obtienen si pueden involucrar interacción social.\\
+
+La idea es que mientras el usuario se encuentre utilizando la aplicación, de vez en cuando ésta le solicite responder un desafío, ofreciéndole siempre la opción de pasar y no realizar el desafío.\\
+
+Además, todos los desafíos deben retribuírse con algún premio al usuario, los cuales son definidos en la sección \textbf{Premios}. Estos podrían ser compartidos a través de distintas redes sociales, o bien permitirle al usuario compartirlos con otros usuarios, y también darle más acceso a información dentro del sistema, o bien a otras funcionalidades del mismo.\\
+
+Por último, los desafíos son de distintos tipos dependiendo el tipo de validación realizada.\\
+
+Para el primer prototipo se tiene objetivo de implementar el desafío Validar Tags.\\
+
+\begin{itemize}
+ \item \textbf{Validar Tags} \\
+
+El objetivo de esta validación es saber si los tags que le han agregado los usuarios a un lugar en específico sean correctos.\\
+
+La forma de realizarse, es que mientras use la aplicación, al usuario se le pregunta repentinamente si desea resolver un desafío, y se le muestra una pregunta del tipo "los siguientes tags corresponden al lugar?" y aparece el nombre de un lugar y los tags. El usuario puede responder afirmativamente, negativamente, o pasar el desafío, es decir, no responder la pregunta.\\
+
+Lo ideal sería pedirle validación de tags al usuario de lugares similares a los que el usuario visite frecuentemente, y por supuesto, a los que visite o haya visitado.\\
+
+ \item \textbf{Verificar Ubicación} \\
+
+El objetivo de esta validación, es que el usuario confirme la ubicación de un lugar. Existen 2 formas de solicitar este desafío:\\
+
+La idea es que en la base de datos de lugares, la aplicación tendrá una serie de lugares que aún están pendientes de ser validados.\\
+
+Cuando el usuario utilice la aplicación y \textbf{se encuentre cercano a uno de los lugares pendientes} a ser validados, se le solicitará al usuario responder un desafío, el cuál será confirmar si existe el lugar, por ejemplo, una pregunta del tipo "hay una plaza cerca de donde te encuentras?", donde el usuario tiene las alternativas de decir que sí, que no, o que no sabe (es decir, no está obligado a responder).\\
+
+Otra variante de este desafío es que se le solicite al usuario \textbf{validar si existe un lugar lejano a su ubicación actual}. En este caso, el desafío quedaría disponible para que el usuario lo pueda resolver en días posteriores, y al estar en la ubicación solicitada por el desafío tendrá las opciones de decir que el lugar sí existe, o no lo hace, o bien si desea no responder el desafío (esta última opción estará disponible todo el tiempo).\\
+
+El objetivo de esto último es evitar que un usuario agregue un lugar y el mismo lo valide constantemente con varias cuentas, debe existir una variante de este desafío que solicite al usuario ir a un lugar lejano a su ubicación actual para verificar una ubicación, obviamente esta validación recibirá un premio mayor.\\
+
+De esta forma, si se tiene dudas sobre algún lugar, se puede enviar el desafío de verificar un lugar lejano a un gran número de usuarios, y basta con que unos pocos lo realicen, ya que es poco probable que alguien recorra una distancia  razonable y mienta a la hora de validar.\\
+
+ \item \textbf{Validar Información} \\
+
+El objetivo de esta validación es saber si la información que agregan los usuarios a los lugares es correcta y comprensible.\\
+
+La forma de realizarse, es que mientras use la aplicación, al usuario se le pregunta repentinamente si desea resolver un desafío, y se le muestra una pregunta del tipo "la siguiente información se entiende?" o bien "la siguiente informacion es verídica?" y mostrar un párrafo agregado por otro usuario y el lugar al que corresponde, con las alternativas adirmativa, negativa, y pasar la pregunta.\\
+
+\end{itemize}
+
+\subparagraph{Visitar}
+
+\subparagraph{Agregar Nuevo Lugar}
+
+\subparagraph{Editar Datos de Lugares}
+
+\subparagraph{Comentar y Evaluar}
+
+\subparagraph{Privacidad}
+
+\subsubsection{Administradores}
+
+Los usuarios administradores, además de las mismas opciones de los usuarios comunes, deben tener la opción de administrar la validación de los datos, y crear desafíos si se desea.\\
+
+Es decir, los datos se validan automáticamente de acuerdo a lo desafíos que resuelven los usuarios, y asimismo los desafíos se generan automáticamente de acuerdo a los tipos de datos que falte validar. Sin embargo, el usuario administrador debe poder asignar un lugar como "validado" sin importar si se han resuelto desafíos para él o no, y asimismo, debe poder crear desafíos arbitratios para enviar a los usuarios, esto para, por ejemplo, enviar desafíos que se sepa que su respuesta es "No" y así determinar el grado de confianza en las respuestas de los usuarios.Los usuarios administradores, además de las mismas opciones de los usuarios comunes, deben tener la opción de administrar la validación de los datos, y crear desafíos si se desea.\\
+
+Es decir, los datos se validan automáticamente de acuerdo a lo desafíos que resuelven los usuarios, y asimismo los desafíos se generan automáticamente de acuerdo a los tipos de datos que falte validar. Sin embargo, el usuario administrador debe poder asignar un lugar como "validado" sin importar si se han resuelto desafíos para él o no, y asimismo, debe poder crear desafíos arbitratios para enviar a los usuarios, esto para, por ejemplo, enviar desafíos que se sepa que su respuesta es "No" y así determinar el grado de confianza en las respuestas de los usuarios.\\
+
+\subsubsection{Premios}
+
+\paragraph{Puntos}
+\paragraph{Medallas}
+\paragraph{Acceso a Información}
+\paragraph{Acceso a Otras Features}
+\paragraph{Asignación de Premios}
+
+\subsubsection{Plug-Ins}
+\paragraph{Imágenes}
+\paragraph{Dibujo}
+\paragraph{Rutas}
+
+\newpage
+\section{Planificación Trabajo Dirigido}
+
+\section{Primer Prototipo}
+
+\subsection{Propuesta}
+
+\subsection{Diseño}
+
+\subsubsection{Cliente}
+
+\subsubsection{Servidor}
+
+\subsection{Descripción}
+
+\subsection{Prueba con Usuarios}
+
+\subsubsection{Resultados Encuesta}
+
+\subsubsection{Feedback Usuarios}
+
+\subsubsection{Análisis de Resultados}
+
+\section{Fases Posteriores}
+
+
+\end{document}
