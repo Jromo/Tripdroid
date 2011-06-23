@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.8.25)  21 JUN 2011 00:53
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.8.25)  23 JUN 2011 00:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -587,12 +587,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 204--205
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--235
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
 
  []
 
 [9]
+Underfull \hbox (badness 10000) in paragraph at lines 230--231
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 234--235
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 236--237
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 238--239
 
  []
 
@@ -601,7 +616,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 240--241
 
  []
 
-
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 242--243
 
  []
@@ -616,7 +631,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 246--247
 
  []
 
-[10]
+
 Underfull \hbox (badness 10000) in paragraph at lines 248--249
 
  []
@@ -641,7 +656,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 256--257
 
  []
 
-
+[11]
 Underfull \hbox (badness 10000) in paragraph at lines 258--259
 
  []
@@ -652,28 +667,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 260--261
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 262--263
-
- []
-
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 264--265
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 266--267
-
- []
-
-
-Overfull \hbox (10.28157pt too wide) in paragraph at lines 268--270
+Overfull \hbox (10.28157pt too wide) in paragraph at lines 262--264
 []\OT1/cmr/m/sl/10 Culturales: \OT1/cmr/m/n/10 ?`Qu^^Se hace ex-ac-ta-mente a u
 n lu-gar co-mo ``cul-tur-al``? ?`O qui^^Sen/c^^Somo
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 268--270
+Underfull \hbox (badness 10000) in paragraph at lines 262--264
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 265--266
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 267--268
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 269--270
 
  []
 
@@ -692,28 +707,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 275--276
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 277--278
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 279--280
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 281--282
-
- []
-
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 291--292
+Underfull \hbox (badness 10000) in paragraph at lines 285--286
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 293--295
+Underfull \hbox (badness 10000) in paragraph at lines 287--289
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 290--291
 
  []
 
@@ -723,12 +728,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 296--297
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 302--303
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 304--305
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 309--310
 
  []
 
@@ -737,7 +747,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 313--314
 
  []
 
-
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 315--316
 
  []
@@ -747,33 +757,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 319--320
 
  []
 
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 321--322
+
+Underfull \hbox (badness 10000) in paragraph at lines 322--323
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 325--326
+Underfull \hbox (badness 10000) in paragraph at lines 324--325
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 328--329
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 330--331
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--333
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 337--338
+Underfull \hbox (badness 10000) in paragraph at lines 333--334
 
  []
 
@@ -783,22 +788,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 339--340
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 341--342
+
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 343--344
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 345--346
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 347--348
-
- []
-
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 349--350
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--352
+Underfull \hbox (badness 10000) in paragraph at lines 357--358
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 359--360
 
  []
 
@@ -813,17 +828,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 363--364
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 365--366
+Underfull \hbox (badness 10000) in paragraph at lines 366--367
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 367--368
+Underfull \hbox (badness 10000) in paragraph at lines 368--369
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 369--370
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 370--371
 
  []
 
@@ -837,7 +852,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 374--375
 
  []
 
-[15]
+
 Underfull \hbox (badness 10000) in paragraph at lines 376--377
 
  []
@@ -867,7 +882,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 386--387
 
  []
 
-
+[16]
 Underfull \hbox (badness 10000) in paragraph at lines 388--389
 
  []
@@ -882,23 +897,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 392--393
 
  []
 
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 394--395
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 396--397
-
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 398--399
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 404--405
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 402--403
 
  []
 
@@ -908,22 +918,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 406--407
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 408--409
+Underfull \hbox (badness 10000) in paragraph at lines 409--410
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 412--413
+Underfull \hbox (badness 10000) in paragraph at lines 411--412
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 415--416
+Underfull \hbox (badness 10000) in paragraph at lines 414--415
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 417--418
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 418--419
 
  []
 
@@ -932,23 +942,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 420--421
 
  []
 
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 424--425
+
+Underfull \hbox (badness 10000) in paragraph at lines 425--426
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 426--427
+Underfull \hbox (badness 10000) in paragraph at lines 429--430
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 431--432
+Underfull \hbox (badness 10000) in paragraph at lines 439--440
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 435--436
+Underfull \hbox (badness 10000) in paragraph at lines 443--444
 
  []
 
@@ -957,8 +967,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 445--446
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 449--450
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
 
  []
 
@@ -967,34 +977,304 @@ Underfull \hbox (badness 10000) in paragraph at lines 451--452
 
  []
 
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 453--454
+
+Underfull \hbox (badness 10000) in paragraph at lines 455--456
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 457--458
+Underfull \hbox (badness 10000) in paragraph at lines 459--460
 
  []
 
-[19] [20] (./InformeTripdroid.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 461--462
+
+ []
+
+
+Overfull \hbox (9.28067pt too wide) in paragraph at lines 465--466
+\OT1/cmr/m/n/10 caci^^Son, ten-dr^^Sa ac-ce-so a un n^^Sumero lim-i-ta-do de lu
+-gares (ya val-i-da-dos, por supuesto),
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 473--474
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 475--476
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 477--478
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 483--484
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 485--486
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 501--502
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 505--506
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 507--508
+
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 509--510
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--514
+
+ []
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 518--519
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 520--521
+
+ []
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 550--551
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 556--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 558--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--561
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 562--563
+
+ []
+
+[23] <./imgs/TripdroidActivities.png, id=84, 696.6025pt x 399.4925pt>
+File: ./imgs/TripdroidActivities.png Graphic file (type png)
+
+<use ./imgs/TripdroidActivities.png>
+Overfull \hbox (28.76947pt too wide) in paragraph at lines 565--567
+[]  [] 
+ []
+
+[24 <./imgs/TripdroidActivities.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 571--572
+
+ []
+
+<./imgs/TripdroidLogin.png, id=91, 246.1697pt x 369.63094pt>
+File: ./imgs/TripdroidLogin.png Graphic file (type png)
+
+<use ./imgs/TripdroidLogin.png> [25 <./imgs/TripdroidLogin.png (PNG copy)>]
+Overfull \hbox (7.18039pt too wide) in paragraph at lines 583--584
+ \OT1/cmr/bx/n/10 Start-Men-u-Activ-i-ty:[] \OT1/cmr/m/n/10 Menu ini-cial que c
+on-tiene en-laces a los Datos del Usuario,
+ []
+
+<./imgs/TripdroidStartMenu.png, id=95, 368.1253pt x 247.67531pt>
+File: ./imgs/TripdroidStartMenu.png Graphic file (type png)
+
+<use ./imgs/TripdroidStartMenu.png>
+<./imgs/TripdroidDatos.png, id=96, 371.13657pt x 248.42813pt>
+File: ./imgs/TripdroidDatos.png Graphic file (type png)
+
+<use ./imgs/TripdroidDatos.png> [26 <./imgs/TripdroidStartMenu.png (PNG copy)> 
+<./imgs/TripdroidDatos.png (PNG copy)>]
+<./imgs/TripdroidAdmin.png, id=100, 366.61969pt x 51.94406pt>
+File: ./imgs/TripdroidAdmin.png Graphic file (type png)
+
+<use ./imgs/TripdroidAdmin.png>
+Underfull \hbox (badness 10000) in paragraph at lines 608--609
+
+ []
+
+<./imgs/TripdroidMapaMenu.png, id=101, 371.13657pt x 248.42813pt>
+File: ./imgs/TripdroidMapaMenu.png Graphic file (type png)
+
+<use ./imgs/TripdroidMapaMenu.png> [27 <./imgs/TripdroidAdmin.png (PNG copy)> <
+./imgs/TripdroidMapaMenu.png (PNG copy)>]
+<./imgs/TripdroidDesafio.png, id=105, 371.13657pt x 248.42813pt>
+File: ./imgs/TripdroidDesafio.png Graphic file (type png)
+
+<use ./imgs/TripdroidDesafio.png>
+<./imgs/TripdroidOpciones.png, id=106, 371.13657pt x 248.42813pt>
+File: ./imgs/TripdroidOpciones.png Graphic file (type png)
+
+<use ./imgs/TripdroidOpciones.png> [28 <./imgs/TripdroidDesafio.png (PNG copy)>
+ <./imgs/TripdroidOpciones.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 642--643
+
+ []
+
+
+Overfull \hbox (1.56277pt too wide) in paragraph at lines 646--647
+ \OT1/cmr/bx/n/10 Mod-el[] \OT1/cmr/m/n/10 Con-tiene clases que son Ob-je-tos q
+ue cor-re-spon-den a las dis-tin-tas Tablas
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 646--647
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 650--651
+
+ []
+
+
+Overfull \hbox (1.23904pt too wide) in paragraph at lines 653--654
+[]\OT1/cmr/bx/n/10 InteractiveArrayAdapter: \OT1/cmr/m/n/10 Clase que adap-ta l
+os ar-reg-los de las ListView
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 660--661
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--663
+
+ []
+
+<./imgs/ModeloDatos.png, id=110, 424.58624pt x 289.08pt>
+File: ./imgs/ModeloDatos.png Graphic file (type png)
+
+<use ./imgs/ModeloDatos.png>
+Underfull \hbox (badness 10000) in paragraph at lines 670--671
+
+ []
+
+[29 <./imgs/ModeloDatos.png>]
+Overfull \hbox (5.30624pt too wide) in paragraph at lines 675--676
+\OT1/cmr/m/n/10 mo par^^Sametro y crea el de-saf^^S^^Po aso-ci-a-do a la com-bi
+-naci^^Son lu-gar/tag/usuario,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 693--694
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 705--706
+
+ []
+
+[30]
+Underfull \hbox (badness 10000) in paragraph at lines 707--708
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 720--721
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 742--743
+
+ []
+
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 769--770
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 771--772
+
+ []
+
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 773--774
+
+ []
+
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 778--779
+
+ []
+
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 791--792
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 793--794
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 795--796
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 797--798
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 799--800
+
+ []
+
+[35] (./InformeTripdroid.aux) ) 
 Here is how much of TeX's memory you used:
- 2619 strings out of 495061
- 30506 string characters out of 1182621
+ 2670 strings out of 495061
+ 31871 string characters out of 1182621
  91365 words of memory out of 3000000
- 5784 multiletter control sequences out of 15000+50000
- 7816 words of font info for 30 fonts, out of 3000000 for 9000
+ 5823 multiletter control sequences out of 15000+50000
+ 8162 words of font info for 31 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  27i,7n,27p,1011b,253s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/publi
-c/amsfonts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
-cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pf
-b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on InformeTripdroid.pdf (21 pages, 134595 bytes).
+</usr/share/texmf-texlive/fonts/type1/public/ams
+fonts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
+bx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texm
+f-texlive/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texmf-texlive/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/
+public/amsfonts/cm/cmti10.pfb>
+Output written on InformeTripdroid.pdf (36 pages, 405560 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
+ 157 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

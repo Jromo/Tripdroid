@@ -223,12 +223,6 @@ A continuación se muestran los principales comentarios dados por los usuarios e
 \item Poder dibujar encima(tener capas guardadas con dibujos, incluso puede ser colaborativo) \textbf{1}
 \end{itemize}
 
-%\begin{figure}[h] %[h] para here [b] para bottom [t] para top
-%\hspace{-1cm}
-%\includegraphics[width=400]{./head.jpg}
-%\caption{Simulated Dummy Head}
-%\end{figure}
-
 \subsection{Análisis de Resultados}
 
 Se observa que en general los usuarios tienen interés por obtener datos útiles para ellos, es decir, información sobre los lugares que les interesen, recomendaciones, conocer la ubicación de distintos servicios, etc. Además de valorar bastante la confiabilidad de la información que se les entrega, y la rapidez de la aplicación en sí (considerando también como rapidez el hecho de que no requiera estar mucho tiempo atento al equipo para usar la aplicación), todos estos aspectos, que fueron los más votados, se condicen con las opiniones recibidas, ya que los usuarios recomendaron que la aplicación requiera estar poco tiempo mirando el equipo, que permitiera comentar sobre los lugares además de dar información, que recomiende lugares de acuerdo a los gustos del usuario, etc.\\
@@ -457,40 +451,366 @@ Es decir, los datos se validan automáticamente de acuerdo a lo desafíos que re
 Los premios corresponden a beneficios que obtiene el usuario a cambio de resolver desafíos y aportar a la aplicación con datos que sean validados como correctos. Los premios pueden ser de diversos tipos.\\
 
 \paragraph{Puntos}
+
+Cada usuario tendrá asignado un puntaje, de alguna manera a definir (simplemente una puntuación que vaya aumentando, varias stats por usuario, etc.), y éste aumentará a medida que resuelva desafíos o realice aportes a la aplicación. La idea es que con cierto número de puntos el usuario vaya obteniendo beneficios tales como mayor acceso a información u otros beneficios.\\
+
 \paragraph{Medallas}
+
+Otra forma de entregar beneficios a los usuarios, y que también debe ser mejor definida, es entregar medallas a éstos de acuerdo a los lugares visitados y al contexto, es decir, algún usuario podría tener una medalla que indique que ha visitado muchos museos, o que ha resuelto muchos desafíos, etc.\\
+
+Las medallas podrían ser canjeables por otros beneficios como el acceso a información y el acceso a otras features de la aplicación.\\
+
 \paragraph{Acceso a Información}
+
+Cuando el usuario ingrese por primera vez a la aplicación, tendrá acceso a un número limitado de lugares (ya validados, por supuesto), el cuál irá en aumento a medida que el usuario vaya resolviendo desafíos y agregando lugares, mediante alguna medida, por ejemplo, el número de puntos del usuario.
+
 \paragraph{Acceso a Otras Features}
+
+Además de las funcionalidades ya descritas, sería bueno que la aplicación ofrezca distintos plug-ins para que los usuarios exploren otras formas de uso de la aplicación, las ideas que se tienen acerca de estos se presentan en el siguiente punto.
+
 \paragraph{Asignación de Premios}
 
+Un tema importante, es el número de premios o beneficios que se les dará a los usuarios al resolver desafíos o realizar aportes, la idea es que el premio sea proporcional a la dificultad del desafío.\\
+
+Queda pendiente establecer un orden de los desafíos del más fácil al más difícil para determinar cuáles recibiran más beneficios, a priori, un orden posible del más difícil (más beneficios), al más fácil sería como sigue:\\
+
+\textbf{Desafíos:}\\
+
+Verificar Ubicación (a mayor distancia, mayor premio)
+Validar Información
+Validar Tags
+
+Además existen premios para los aportes que realiza el usuario a la información de la aplicación, pero estos deberían ser asignados una vez que hayan sido validados los respectivos aportes.\\
+
+\textbf{Aportes:}\\
+
+\begin{itemize}
+\item Agregar Nuevo Lugar
+\item Aportar con nuevos datos de un lugar
+\end{itemize}
+
+
+La idea es para un primer prototipo elaborar el desafío de Validar Tags.
+
 \subsubsection{Plug-Ins}
+
+La implementación de Plug-Ins se considera un objetivo a largo plazo del proyecto, no obstante, se comentan a acontinuación las posibles ideas de Plug-Ins que pueda tener la aplicación, ya que es una opción que los usuarios ganen acceso a estos Plug-Ins al resolver desafíos.
+
 \paragraph{Imágenes}
+
+Permitir que el usuario asigne una imagen (foto) tomada en un lugar, a ese lugar, y poder ver las imágenes que ha aportado el resto de los usuarios.\\
+
 \paragraph{Dibujo}
+
+Como propuso uno de los usuarios encuestados, sería interesante agregar un Plug-In que permita dibujar sobre el mapa de la aplicación.\\
+
+La forma en que se hace esto, es que al dibujar sobre el mapa, se guarda el dibujo en una sola capa, y se puede seguir trabajando sobre el mapa sin problemas, teniendo varias capas de dibujo.\\
+
+En fases posteriores del proyecto, se puede implementar que existan capas colaborativas de dibujos sobre el mapa.\\
+
 \paragraph{Rutas}
+
+Otra funcionalidad interesante, sería agregar un Plug-In que entregue al usuario una imágen del mapa con la ruta de los lugares que ha visitado, y que ésta sea exportable en distintos formatos.\\ 
 
 \newpage
 \section{Planificación Trabajo Dirigido}
 
+Para cumplir los objetivos señalados, la idea es desarrollar el primer prototipo y luego de ello, realizar un estudio de usabilidad del mismo para así elaborar un segundo prototipo basado en las opiniones de los usuarios.\\
+
+Luego, la planificación para efectos del Trabajo Dirigido es la siguiente:\\
+
+\begin{itemize}
+\item \textbf{2 - 20 Mayo:} Elaboración Prototipo 1.
+\item \textbf{6 Junio - 17 Junio:} Encuestar usuarios que utilicen el prototipo y análisis de resultados.
+ \item \textbf{20 Junio - 30 Junio:} Elaborar un segundo prototipo basado en los resultados obtenidos. Se estima que éste debe debe tener los tipos de lugares, y una interfaz para que el usuario agregue lugares, aunque por ahora la validación sea sólo vía administrador. Idealmente, elaborar sistema de validación de los lugares con preguntas al usuario.
+\end{itemize}
+
+\newpage
 \section{Primer Prototipo}
 
 \subsection{Propuesta}
 
-\subsection{Diseño}
+Finalmente, la propuesta del prototipo a realizar sería uno que tenga las siguientes características:
 
-\subsubsection{Cliente}
+\begin{itemize}
+\item Al menos 4 lugares identificados en el mapa, de los cuales, por ejemplo, sean 2 que se muestren al inicio al usuario antes que haya resuelto algún desafío.
 
-\subsubsection{Servidor}
+\item Desarrollar, al menos, el sistema de validación de tags de los lugares, con el objetivo de mostrar un desafío al usuario de prueba.
+
+\item Permitir que el usuario agregue tags a los lugares ya existentes, para probar la validación de los mismos.
+
+\item Además, desarrollar uno de los sistemas de premiación al usuario, se estima como mínimo, el de puntaje por usuario, el cual debe ir desbloqueando lugares para el usuario a medida que este aumente su puntuación.
+\end{itemize}
+
+Se estima que con estas mínimas funcionalidades se puede presentar al usuario de prueba un prototipo que represente a grandes rasgos el objetivo de la aplicación y le permita determinar si es simple de entender y usar, y además realizar propuestas sobre como cree que se puede usar la aplicación o aportar nuevas ideas en general.
+
 
 \subsection{Descripción}
 
+La aplicación tiene un lado servidor y el lado cliente, que corresponde a la aplicación en el equipo.\\
+
+Se describe a continuación el diseño de ambas partes.
+
+\subsubsection{Cliente}
+
+Una aplicación Android se encuentra definida por Actividades (Activity de ahora en adelante), e Intents.\\
+
+Una \textit{Activity} (es decir, una clase de la aplicación que hereda de la clase Activity) se presenta al usuario como una ventana. Esta clase crea una ventana que muestra una interfaz de usuario, vale decir, corresponden a todas las ventanas de una aplicación. \\
+
+Un \textit{Intent} es una clase que permite especificar una Activity a ejecutar, llamando a uno de los métodos de la clase Activity con ese Intent de parámetro.\\
+
+Luego, en cada Activity existen Intents hacia otras actividades. A continuación se muestra un diagrama con las Activities de la aplicación y los Intents reflejados mediante flechas entre las Activities.\\
+
+\begin{figure}[h]
+\hspace{-1cm}
+\includegraphics[width=400pt]{./imgs/TripdroidActivities.png}
+\caption{Activities de la Aplicación}
+\end{figure}
+
+\newpage
+Descripción de las Activities:\\
+
+\paragraph{LoginUserActivity:} Contiene formulario para el registro y login de Usuario. Se valida enviando los datos de usuario y password al servidor para comprobar si el usuario existe.
+
+
+\begin{figure}[h]
+\hspace{3cm}
+\includegraphics[width=180pt]{./imgs/TripdroidLogin.png}
+\caption{Login y Registro}
+\end{figure}
+
+\newpage
+\paragraph{StartMenuActivity:} Menu inicial que contiene enlaces a los Datos del Usuario, Ver el Mapa, o Administrar en caso de que el usuario sea un administrador.
+
+\begin{figure}[h]
+\hspace{3cm}
+\includegraphics[width=180pt]{./imgs/TripdroidStartMenu.png}
+\caption{Menú de Inicio}
+\end{figure}
+
+\paragraph{MyDataActivity:} Menú que resume los datos del usuario, su nombre, correo y experiencia.
+
+\begin{figure}[h]
+\hspace{3cm}
+\includegraphics[width=180pt]{./imgs/TripdroidDatos.png}
+\caption{Datos del Usuario}
+\end{figure}
+
+\newpage
+\paragraph{AdministrarTagsActivity:} En caso de que el usuario sea un administrador, tiene acceso a esta actividad, la cual muestra una lista con los tags propuestos por los usuarios, además de los votos que han recibido como correctos o incorrectos para que el administrador pueda ingresarlos al sistema o no.
+
+\begin{figure}[h]
+\hspace{3cm}
+\includegraphics[width=180pt]{./imgs/TripdroidAdmin.png}
+\caption{Validación Tag}
+\end{figure}
+
+\paragraph{ListPlacesActivity:} Actividad que carga el Mapa y los lugares que estén cargados en la aplicación, con sus tags e información. El usuario puede visitar o agregar tags a los que se encuentren cercanos a su ubicación actual. Esta actividad funciona mediante las siguientes clases:\\
+
+\begin{itemize}
+ \item \textbf{SitesOverlay:} Clase que carga el mapa y los lugares.
+ \item \textbf{MyLocationListener:} Thread que lee la ubicación actual del usuario mediante GPS
+ \item \textbf{PopupPanel:} Ventana emergente con las coordenadas e información del lugar, y los botones que permiten realizar distintas acciones en el lugar al usuario.
+\end{itemize}
+
+\begin{figure}[h]
+\hspace{3cm}
+\includegraphics[width=180pt]{./imgs/TripdroidMapaMenu.png}
+\caption{Mapa con Lugares}
+\end{figure}
+
+\newpage
+\paragraph{ChallengeActivity:} Envía un desafío al usuario, en este caso, una pregunta acerca de si es correcta la relación entre un Lugar y un Tag.
+
+\begin{figure}[h]
+\hspace{3cm}
+\includegraphics[width=180pt]{./imgs/TripdroidDesafio.png}
+\caption{Desafío tipo Tag}
+\end{figure}
+
+\paragraph{OptionsActivity:} Aquí el usuario puede aportar datos acerca del Lugar, en el caso del prototipo, sólo puede proponer nuevos tags para el Lugar, que son posteriormente validados mediante desafíos para otros usuarios.
+
+\begin{figure}[h]
+\hspace{3cm}
+\includegraphics[width=180pt]{./imgs/TripdroidOpciones.png}
+\caption{Agregar Tag}
+\end{figure}
+
+\paragraph{HistoryActivity:} Aún no desarrollada completamente. Actividad que muestra la historia o más información sobre el lugar.
+
+\newpage
+Además, existen otros 2 packages en la aplicación: Utils y Model\\
+
+\paragraph{Model}
+
+Contiene clases que son Objetos que corresponden a las distintas Tablas de la Base de Datos.(Place, User, DesafioTag).\\
+
+\paragraph{Utils}
+
+Contiene clases que se usan para desarrollar funcionalidades de las clases principales.\\
+
+\begin{itemize}
+ \item \textbf{InteractiveArrayAdapter:} Clase que adapta los arreglos de las ListView de Android para que tengan un CheckButton.
+ \item \textbf{UserSession:} Maneja las sesiones de Usuario, contiene una instancia del objeto correspondiente al usuario actual en la aplicación.
+ \item \textbf{WebServiceJSON:} Clase que permite obtener y enviar parámetros en formato de archivo JSON al servidor.
+\end{itemize}
+
+\subsubsection{Servidor}
+
+El Servidor de la aplicación corresponde a un servidor gratuito de Google App Engine, donde se tienen los datos de los usuarios, lugares y desafíos y los distintos métodos para obtener dichos datos desde la aplicación cuando se requiera.\\
+
+El modelo de datos es el siguiente:\\
+
+\begin{figure}[h]
+\hspace{1.5cm}
+\includegraphics[width=220pt]{./imgs/ModeloDatos.png}
+\caption{Agregar Tag}
+\end{figure}
+
+Y los métodos que tiene el Servidor son los siguientes: (todos los métodos reciben parámetros vía GET y retornan texto en formato JSON según lo que se requiera)\\
+
+\begin{itemize}
+\item \textbf{votaruntag():} Recibe como parámetro un tag y la respuesta del usuario al desafío asociado a ese tag (Sí o No) y le suma un punto al campo ‘correcto’ o ‘incorrecto’ de ese tag según corresponda.
+
+\item \textbf{agregardesafiotag():} Al agregar un nuevo tag, éste método lo recibe como parámetro y crea el desafío asociado a la combinación lugar/tag/usuario, verificando que no exista previamente.
+
+\item \textbf{obtenerdesafiotag():} Retorna un desafío al azar entre todos los desafíos que no hayan sido propuestos por el usuario que invoca el método. Esto es para generar la pregunta de la actividad del desafío.
+
+\item \textbf{obtenertags():} Recibe como parámetro un lugar, y retorna los tags asociados al mismo.
+
+\item \textbf{administrartags():} Retorna una lista de todos los desafíos de tags pendientes, junto con los votos que han recibido.
+
+\item \textbf{agregarnuevotag():} Recibe como parámetro un tag que el administrador haya chequeado como correcto, luego, agrega este tag al lugar correspondiente y borra el desafío asociado a dicho tag.
+
+\item \textbf{registrar():} Recibe como parámetros todos los datos del formulario de registro del usuario, y en caso de no existir un usuario con el mismo username, o email, lo registra en el sistema.
+
+\item \textbf{login():} Recibe como parámetros el username y el password, verifica que la combinación sea correcta y le permite ingresar a la aplicación.
+
+\end{itemize}
+
 \subsection{Prueba con Usuarios}
+
+Luego de elaborar el primer prototipo de la aplicación, éste fue mostrado a los usuarios utilizando un móvil Xperia Mini X10, mediante el cual probaron la aplicación, realizando las siguientes tareas:\\
+
+\begin{itemize}
+ \item Registrarse en la aplicación
+ \item Visualizar el mapa
+ \item Buscar un lugar cercano a su ubicación actual
+ \item Visitarlo
+ \item Responder un desafío
+ \item Agregar un Tag
+\end{itemize}
+
+
+Posteriormente se le realizó una encuesta de usabilidad a los usuarios, donde evaluaron distintas característas en una escala de 1 a 5 (desde "Muy en Desacuerdo" hasta "Muy de Acuerdo"), y luego se permitía entregar feedback libre sobre la aplicación.\\
+
+La encuesta fue realizada a 15 usuarios.\\
 
 \subsubsection{Resultados Encuesta}
 
+La escala fue normalizada de la siguiente forma:
+
+\begin{itemize}
+\item Muy en Desacuerdo : 1
+\item En desacuerdo: 2
+Neutro: 3
+De acuerdo: 4
+Muy de Acuerdo: 5\end{itemize}
+
+Luego, el promedio de las respuestas de los encuestados en cada pregunta, fue el siguiente:\\
+
+\begin{itemize}
+\item La aplicación es fácil de usar \textbf{3,5}
+\item Es fácil encontrar la información deseada \textbf{3,3}
+\item Las distintas opciones funcionan correctamente \textbf{3,1}
+\item Las velocidad de la aplicación es adecuada \textbf{3,4}
+\item El uso del color es aceptable \textbf{3,4}
+\item El diseño general de la aplicación es apropiado \textbf{3,2}
+\item La organización de la información de la aplicación es apropiada \textbf{3,5}
+\item El contenido de la aplicación es relevante \textbf{3,2}
+\item La interfaz de la aplicación es placentera \textbf{3,2}
+\item La aplicación tiene todas las funcionalidades esperadas \textbf{3}
+\item La aplicación tiene todas las capacidades esperadas \textbf{3}
+\item ¿Cómo califica globalmente la aplicación analizada? \textbf{3,2}
+
+\item Promedio Total: \textbf{3,2}
+\end{itemize}
+
+
 \subsubsection{Feedback Usuarios}
+
+Comentarios varios de los usuarios que probaron el prototipo y respondieron la encuesta, ordenados por los que se repitieron (o muy similares) más frecuentemente:\\
+
+\begin{itemize}
+\item Que los desafíos sean del lugar que visito (9 personas)
+\item Permitir agregar nuevos lugares (8 personas)
+\item Arreglar el focus del click en la ventana del lugar(8 personas)
+\item Que no sea sólo landscape (8 personas)
+\item Agregar búsqueda por tags (6 personas)
+\item Que estén todos los lugares disponibles y la experiencia sirva para otra cosa (6 personas)
+\item Botón para centrar el mapa (6 personas)
+\item Tener familia de íconos propios de la app (5 personas)
+\item Asociarlo a redes sociales(5 personas)
+\item No se distingue bien en el desafío la parte de lugar::tag(4 personas)
+\item Poner los Tags en Info en vez de la ventana emergente, o en ambos lugares. (3 personas)
+\item Revisar lugares que visité (2 personas)
+\item Revisar lugares que visitaron otros usuarios (2 personas)
+\item Poner foto del lugare o ver galería de fotos de un lugar (2 personas)
+\item Desbloquear ''easter eggs'' al ganar experiencia (2 personas)
+\item Ejemplos del relleno en campos de texto
+\item Menú Inicial que de Contexto
+\item Pasar del registro directo a la app
+\item Guardar username y pass
+\item Texto de las ventanas emergentes más lento
+\end{itemize}
 
 \subsubsection{Análisis de Resultados}
 
+Se puede apreciar que en general la evaluación de la aplicación es entre Neutro y De Acuerdo, más cercana al valor Neutro, lo cuál era esperable, ya que se hizo un prototipo bastante básico para empezar a probar. De hecho, sólo 3 usuarios de los encuestados evaluaron negativamente la aplicación globalmente.\\
+
+En general, el principal problema con que se toparon los usuarios, fue que los desafíos no fueran relacionados directamente con el lugar que visitaban, sin embargo, la gran mayoría no tuvo inconveniente alguno en comprender intuitivamente lo que era el desafío en sí y que se utilizaba para validar, de hecho, varios de ellos mencionaron que era algo similar a lo que hacen varias aplicaciones en distintas redes sociales mientras probaban la aplicación.\\
+
+Por último, se aprecia que la evaluación más baja es en el item ''La aplicación tiene todas las funcionalidades esperadas`` lo cuál es lógico puesto que se trata de un prototipo con el mínimo de funcionalidades. Esto es positivo, ya que los usuarios en general al ver la aplicación preguntaban por funcionalidades que les gustaría que tuviese o que creían que existían, las cuales se pueden ver en el resumen del feedback recibido, y permiten tener una guía para elaborar el segundo prototipo.\\
+
+\newpage
+\section{Propuesta Segundo Prototipo}
+
+A raíz de los resultados obtenidos, para un segundo prototipo, el objetivo es tener las siguientes funcionalidades:\\
+
+\begin{itemize}
+\item Desafíos sólo relativos al lugar que se visita.
+\item Permitir que el usuario agregue lugares.
+\item Agregar alguna funcionalidad que se desbloquee al subir de nivel, por ejemplo, revisar lugares visitados.
+\item Botón para centrar el mapa
+\item Búsqueda de lugares por tag
+\end{itemize}
+
+\newpage
 \section{Fases Posteriores}
 
+Fuera del alcance del Trabajo Dirigido, se pretende seguir con el proyecto de la siguiente manera:\\
+
+Realizar nuevamente un estudio de usabilidad basado en el segundo prototipo.\\
+
+Elaborar un tercer prototipo, siendo este ya una primera versión definitiva de la aplicación.\\
+
+Diseñar un Plan de Negocios, con ayuda de algún estudiante o profesional del área, pero que cubra más o menos la siguiente idea.\\
+
+\textbf{Plan de Negocios:}\\
+
+\begin{itemize}
+ \item Terminar una versión definitiva de la aplicación basada en los resultados de este Trabajo Dirigido y posteriores encuestas a usuarios en las fases siguientes ya descritas.
+
+  \item Dar a conocer la aplicación a empresas que apoyen ideas de innovación y les interese apoyar el proyecto (Cursor, CORFO, etc.).
+
+ \item En esa misma línea, postular la aplicación al Concurso Kickstar de Innovación http://islae2.cl/.
+
+ \item Conseguir usuarios para la aplicación, de modo de tener una base para decir que la aplicación es usada por la gente.
+
+ \item Analizar que features utilizan los usuarios o las organizaciones contactadas para determinar si existen algunas por las cuáles les interesaría pagar (por ejemplo, por mayor acceso a datos sin necesidad de resolver desafíos, por publicidad dentro de la aplicación, o bien para entregar algún servicio a los clientes que usen la aplicación).
+
+ \item Asimismo, utilizando como base el número de usuarios de la aplicación, buscar empresas que les interese tener auspicios en la aplicación.
+
+\end{itemize}
 
 \end{document}

@@ -30,21 +30,31 @@
 \contentsline {paragraph}{Puntos}{19}
 \contentsline {paragraph}{Medallas}{19}
 \contentsline {paragraph}{Acceso a Informaci\IeC {\'o}n}{19}
-\contentsline {paragraph}{Acceso a Otras Features}{19}
-\contentsline {paragraph}{Asignaci\IeC {\'o}n de Premios}{19}
-\contentsline {subsubsection}{\numberline {5.2.5}Plug-Ins}{19}
-\contentsline {paragraph}{Im\IeC {\'a}genes}{19}
-\contentsline {paragraph}{Dibujo}{19}
-\contentsline {paragraph}{Rutas}{19}
-\contentsline {section}{\numberline {6}Planificaci\IeC {\'o}n Trabajo Dirigido}{20}
-\contentsline {section}{\numberline {7}Primer Prototipo}{20}
-\contentsline {subsection}{\numberline {7.1}Propuesta}{20}
-\contentsline {subsection}{\numberline {7.2}Dise\IeC {\~n}o}{20}
-\contentsline {subsubsection}{\numberline {7.2.1}Cliente}{20}
-\contentsline {subsubsection}{\numberline {7.2.2}Servidor}{20}
-\contentsline {subsection}{\numberline {7.3}Descripci\IeC {\'o}n}{20}
-\contentsline {subsection}{\numberline {7.4}Prueba con Usuarios}{20}
-\contentsline {subsubsection}{\numberline {7.4.1}Resultados Encuesta}{20}
-\contentsline {subsubsection}{\numberline {7.4.2}Feedback Usuarios}{20}
-\contentsline {subsubsection}{\numberline {7.4.3}An\IeC {\'a}lisis de Resultados}{20}
-\contentsline {section}{\numberline {8}Fases Posteriores}{20}
+\contentsline {paragraph}{Acceso a Otras Features}{20}
+\contentsline {paragraph}{Asignaci\IeC {\'o}n de Premios}{20}
+\contentsline {subsubsection}{\numberline {5.2.5}Plug-Ins}{20}
+\contentsline {paragraph}{Im\IeC {\'a}genes}{20}
+\contentsline {paragraph}{Dibujo}{20}
+\contentsline {paragraph}{Rutas}{21}
+\contentsline {section}{\numberline {6}Planificaci\IeC {\'o}n Trabajo Dirigido}{22}
+\contentsline {section}{\numberline {7}Primer Prototipo}{23}
+\contentsline {subsection}{\numberline {7.1}Propuesta}{23}
+\contentsline {subsection}{\numberline {7.2}Descripci\IeC {\'o}n}{23}
+\contentsline {subsubsection}{\numberline {7.2.1}Cliente}{23}
+\contentsline {paragraph}{LoginUserActivity:}{25}
+\contentsline {paragraph}{StartMenuActivity:}{26}
+\contentsline {paragraph}{MyDataActivity:}{26}
+\contentsline {paragraph}{AdministrarTagsActivity:}{27}
+\contentsline {paragraph}{ListPlacesActivity:}{27}
+\contentsline {paragraph}{ChallengeActivity:}{28}
+\contentsline {paragraph}{OptionsActivity:}{28}
+\contentsline {paragraph}{HistoryActivity:}{28}
+\contentsline {paragraph}{Model}{29}
+\contentsline {paragraph}{Utils}{29}
+\contentsline {subsubsection}{\numberline {7.2.2}Servidor}{29}
+\contentsline {subsection}{\numberline {7.3}Prueba con Usuarios}{30}
+\contentsline {subsubsection}{\numberline {7.3.1}Resultados Encuesta}{31}
+\contentsline {subsubsection}{\numberline {7.3.2}Feedback Usuarios}{32}
+\contentsline {subsubsection}{\numberline {7.3.3}An\IeC {\'a}lisis de Resultados}{33}
+\contentsline {section}{\numberline {8}Propuesta Segundo Prototipo}{34}
+\contentsline {section}{\numberline {9}Fases Posteriores}{35}
