@@ -1,0 +1,65 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{4}
+\contentsline {section}{\numberline {2}Descripci\IeC {\'o}n del Problema y Objetivo General de la Aplicaci\IeC {\'o}n}{5}
+\contentsline {subsection}{\numberline {2.1}Aplicaciones con Georreferenciaci\IeC {\'o}n}{5}
+\contentsline {subsection}{\numberline {2.2}Aplicaciones con Control de Calidad Colaborativo}{7}
+\contentsline {subsection}{\numberline {2.3}Objetivos del Trabajo Dirigido}{8}
+\contentsline {subsection}{\numberline {2.4}Metodolog\IeC {\'\i }a de Trabajo}{8}
+\contentsline {section}{\numberline {3}Encuesta Previa}{9}
+\contentsline {subsection}{\numberline {3.1}Resultados Cuantitativos}{9}
+\contentsline {subsection}{\numberline {3.2}Resultados Cualitativos}{9}
+\contentsline {subsubsection}{\numberline {3.2.1}Sobre Aplicaciones Actuales}{10}
+\contentsline {subsubsection}{\numberline {3.2.2}Sobre el Proyecto}{10}
+\contentsline {subsection}{\numberline {3.3}An\IeC {\'a}lisis de Resultados}{11}
+\contentsline {section}{\numberline {4}Aplicaci\IeC {\'o}n Propuesta}{12}
+\contentsline {subsection}{\numberline {4.1}Descripci\IeC {\'o}n General}{12}
+\contentsline {subsection}{\numberline {4.2}Elementos de la Aplicaci\IeC {\'o}n}{12}
+\contentsline {subsubsection}{\numberline {4.2.1}Lugares}{12}
+\contentsline {subsubsection}{\numberline {4.2.2}Usuarios}{12}
+\contentsline {paragraph}{Funcionalidades para el Usuario}{12}
+\contentsline {subparagraph}{Acceso a Datos}{12}
+\contentsline {subparagraph}{Tareas de Validaci\IeC {\'o}n}{13}
+\contentsline {subparagraph}{Visitar}{13}
+\contentsline {subparagraph}{Agregar Nuevo Tag}{13}
+\contentsline {subparagraph}{Agregar Nuevo Lugar}{13}
+\contentsline {subsubsection}{\numberline {4.2.3}Administradores}{13}
+\contentsline {paragraph}{Experiencia}{14}
+\contentsline {subsubsection}{\numberline {4.2.4}Beneficios}{14}
+\contentsline {subsection}{\numberline {4.3}Sistema de Validaci\IeC {\'o}n Colaborativo}{15}
+\contentsline {subsubsection}{\numberline {4.3.1}Proceso de Validaci\IeC {\'o}n}{16}
+\contentsline {subsubsection}{\numberline {4.3.2}Criterios de Validaci\IeC {\'o}n}{18}
+\contentsline {subsubsection}{\numberline {4.3.3}Beneficios y Penalizaciones}{18}
+\contentsline {subsubsection}{\numberline {4.3.4}Consideraciones del Sistema de Validaci\IeC {\'o}n}{18}
+\contentsline {section}{\numberline {5}Calendario}{20}
+\contentsline {section}{\numberline {6}Conclusiones}{21}
+\contentsline {section}{\numberline {A}Otras opiniones de Usuarios}{22}
+\contentsline {section}{\numberline {B}Tripdroid Alfa 2.1}{24}
+\contentsline {subsection}{\numberline {B.1}Resumen}{24}
+\contentsline {subsection}{\numberline {B.2}Descripci\IeC {\'o}n}{24}
+\contentsline {subsubsection}{\numberline {B.2.1}Cliente}{24}
+\contentsline {paragraph}{LoginUserActivity:}{25}
+\contentsline {paragraph}{StartMenuActivity:}{26}
+\contentsline {paragraph}{MyDataActivity:}{26}
+\contentsline {paragraph}{AdministrarTagsActivity:}{27}
+\contentsline {paragraph}{ListPlacesActivity:}{27}
+\contentsline {paragraph}{ChallengeActivity:}{28}
+\contentsline {paragraph}{OptionsActivity:}{28}
+\contentsline {paragraph}{HistoryActivity:}{28}
+\contentsline {paragraph}{Model}{29}
+\contentsline {paragraph}{Utils}{29}
+\contentsline {subsubsection}{\numberline {B.2.2}Servidor}{29}
+\contentsline {subsection}{\numberline {B.3}Instalaci\IeC {\'o}n}{30}
+\contentsline {subsubsection}{\numberline {B.3.1}Requisitos para Instalar}{30}
+\contentsline {subsubsection}{\numberline {B.3.2}Instalaci\IeC {\'o}n}{30}
+\contentsline {subsubsection}{\numberline {B.3.3}Requisitos para Utilizar la Aplicaci\IeC {\'o}n}{31}
+\contentsline {subsection}{\numberline {B.4}Prueba con Usuarios}{31}
+\contentsline {subsubsection}{\numberline {B.4.1}Resultados Encuesta}{31}
+\contentsline {subsubsection}{\numberline {B.4.2}Feedback Usuarios}{32}
+\contentsline {subsubsection}{\numberline {B.4.3}An\IeC {\'a}lisis de Resultados}{33}
+\contentsline {section}{\numberline {C}Tripdroid Alfa 2.2}{34}
+\contentsline {section}{\numberline {D}Alternativas de Desarrollo a Futuro}{35}
+\contentsline {subsection}{\numberline {D.1}Funcionalidades para el Usuario}{35}
+\contentsline {subsection}{\numberline {D.2}Sistema de Validaci\IeC {\'o}n}{37}
+\contentsline {section}{\numberline {E}Fases Posteriores}{40}
+\contentsline {subsection}{\numberline {E.1}Plan de Negocios}{40}
+\contentsline {subsection}{\numberline {E.2}Propuesta Versi\IeC {\'o}n Alfa 2.3}{41}

@@ -1,0 +1,1172 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fullpage}
+
+
+
+
+\begin{document}
+\begin{titlepage}
+\begin{minipage}{12cm} Universidad de Chile
+\\ Facultad de Ciencias F\'isicas y Matem\'aticas
+\\ Departamento de Ciencias de la Computaci\'on\\
+\\
+\end{minipage}
+\vspace*{2cm}
+\begin{center}
+\vspace{0.2cm}
+{\Large \bf\vspace{0.5cm} Informe de Trabajo Dirigido}\\
+{\Huge\bf\vspace{0.3cm} Tripdroid:}\\
+{\Huge\bf\vspace{0.3cm} Georreferenciación Colaborativa}\\
+{\Huge\bf\vspace{0.2cm} en Dispositivos Móviles}\\
+
+\end{center}
+\vspace{4cm}
+\begin{tabular}{ll}
+\bf{Nombre Alumno :}& Jorge Romo J. \\
+\bf{Carrera:} & Ingeniería Civil en Computación\\ 
+\bf{Profesor:} & Jeremy Barbay  \\ 
+\bf{Correo Electrónico:} & jromo.dcc@gmail.com  \\ 
+\bf{Fecha:} & Desde el 21 de Marzo de 2011 al 15 de Agosto 2011  \\ 
+\end{tabular}
+\end{titlepage}
+
+\newpage
+\begin{abstract}
+\section{Introducción}
+
+
+Continuación del desarrollo de Tripdroid, una aplicación de georreferenciación que tiene como objetivo obtener información de lugares de interés para los usuarios, el cuál puede ser turístico o simplemente para conocer nuevos lugares o la ubicación de servicios tales como cajeros automáticos. Para ello, los usuarios pueden aportar información ya sea tags que definan un lugar, o nuevos lugares. Para asegurar la confiabilidad de esta información, cada vez que un usuario visita un lugar, debe responer una tarea de validación, la cuál consiste en responder acerca de la veracidad de la información aportada por otro usuario, o bien un desafío para verificar que el usuario está respondiendo en forma correcta, luego, el usuario recibe acceso a más información (en este caso lugares en el mapa), al responder correctamente. De este modo, se logra una validación colaborativo de la información existente en la aplicación.\\
+
+Además, se estima que la validación de información colaborativa permitirá tener una mayor cantidad de información o bien más frecuentemente actualizada que con una validación centralizada mediante administradores que agreguen y validen la información.
+
+\section{Objetivos}
+
+Determinar que esta es una orientación válida para los posibles usuarios de la aplicación, mediante pruebas de usabilidad para comprobar que resulta fácil de comprender el sistema de validación sin afectar el uso de la aplicación.
+
+\section{Trabajo Realizado}
+
+Se elaboró una nueva versión de la aplicación. la cual tiene implementado el sistema de validación de tags, de la forma ya descrita, de modo que un caso típico de uso de Tripdroid sea como sigue:\\
+
+\begin{itemize}
+ \item Un usuario, Arturo, utiliza la aplicación desde la Plaza de Armas. ''Plaza de Armas`` tiene los tags ''plaza``, ''estatua`` y ''artistas``.
+ \item Arturo agrega el tag ''fuente`` a la Plaza de Armas.
+ \item El tag aún no aparece en el sistema, pero es añadido a la Base de Datos como información aún no validada.
+ \item Otro usuario, Beatriz, visita la plaza de armas, al usar la aplicación, recibe una tarea de validación en la que se le pregunta si cree que el tag ''fuente`` es un tag válido para Plaza de Armas. Beatriz puede responder que este tag es correcto, incorrecto, o bien, pasar sin responder.
+ \item Luego de responder, Beatriz marca como visitada la Plaza de Armas en la aplicación, y aparece un mensaje que le indica que ha ganado 3 puntos de experiencia.
+ \item La misma pregunta de validación creada a partir del tag aportado por Arturo, es enviada a varios usuarios que visitan la Plaza de Armas
+ \item El Administrador del sistema observa que el alrededor del 90\% de los usuarios que respondió la validación del tag ''fuente``, indicaron que era correcto asociarlo a Plaza de Armas, agregará este tag a los tags validados para este lugar.
+ \item Por lo tanto, el tag ''fuente'' pasa a ser parte de los tags de Plaza de Armas, luego, pasa a ser información validada, y en este caso, es correcta, y será visible para los usuarios que visiten la Plaza de Armas de ahora en adelante.
+\end{itemize}
+
+Esta versión fue probada con usuarios para recibir feedback sobre la misma, con resultados positivos.\\
+
+Enlaces a fuentes en Github y video ilustrativo:\\
+\begin{itemize}
+\item https://github.com/Jromo/Tripdroid
+\item http://www.youtube.com/watch?v=eMmNDe2L-lM
+\end{itemize}
+
+\section{Propuestas de Extensiones}
+
+\begin{itemize}
+ \item Agregar nuevos lugares a la aplicación para realizar más pruebas con usuarios.
+  \item Elaborar una nueva versión que incluya gamification. Esto mediante agregar Items como recompensa a los usuarios por validar correctamente, los que les permitan desbloquear nuevos lugares, o información acerca de los mismos.
+  \item Establecer una red de interacción de usuarios dentro de la aplicación, de modo que puedan intercambiar items por otros, o bien acceso a lugares.
+  \item Añadir la opción de compartir estas acciones realizadas en la aplicación en las redes sociales más populares.
+\end{itemize}
+\end{abstract}
+
+\newpage
+\tableofcontents
+\setcounter{tocdepth}{1}
+
+\newpage
+\section{Introducción}
+
+El presente informe consiste en una descripción del trabajo realizado para desarrollar y estudiar la usabilidad de una aplicación de georreferenciación colaborativa para dispositivos móviles.\\
+
+Este proyecto tuvo su inicio como una idea para participar en el Concurso Universitario de Aplicaciones para Android realizado por Cursor Labs, donde se desarrolló la aplicación Tripdroid, en su versión Alfa 1, que consistía en una aplicación de georreferencia con juegos de preguntas y respuestas relativos al lugar en que se encontraba el usuario. Posteriormente, viendo los buenos resultados que obtuvo el proyecto en el concurso (2do lugar), y el interés suscitado por el mismo, entre los otros participantes, profesores, y alumnos de la Escuela de Verano de la Universidad de Chile, a quienes se les realizó una presentación acerca de la aplicación, se estimó que el proyecto tiene bases para continuar, y para ello, se reformularon los objetivos y la propuesta como tal.\\
+
+Se decidió comenzar realizando una encuesta a distintos usuarios que estuviesen dentro del público objetivo de la aplicación, para luego, a partir de los resultados obtenidos, elaborar una versión Alfa 2 que permitiese realizar un estudio de usabilidad del mismo, para definir los objetivos y el enfoque de la aplicación de acuerdo las conclusiones obtenidas, a partir de las opiniones recibidas por los usuarios.\\
+
+A continuación se presentan, en primer lugar, el objetivo general de la aplicación, una descripción de las aplicaciones de este tipo ya existentes, los resultados de la encuesta previa realizada a los usuarios, para luego describir detalladamente la propuesta de versiones preliminares de la aplicación, los resultados del estudio de usabilidad del mismo, y los avances en una versión Alfa 2 basada en dichos resultados. Además, se describe a grandes rasgos lo que se pretende realizar a futuro en este proyecto, fuera del alcance de este trabajo dirigido.\\
+
+\newpage
+\section{Descripción del Problema y Objetivo General de la Aplicación}
+
+Existen muchas aplicaciones que utilizan la georreferenciación en los smartphones y/o tablets, no obstante, ninguna de ellas logra dar información que los usuarios consideren confiable, o bien, si lo hacen, se debe sacrificar la interacción de los usuarios con la misma o sus posibilidades de aportar información a la misma aplicación, o incluso se pierde el objetivo para el cual fueron concebidas, es decir, los usuarios las utilizan de una forma que claramente no era la deseable.\\
+
+Lo que se busca mediante la aplicación a desarrollar, es tener un buen balance entre permitir a los usuarios aportar información para mejorar la aplicación, que obtengan beneficios dentro de la misma a medida que colaboren, pero garantizando que la información aportada sea confiable.\\
+
+Para ello, la propuesta es que los mismos usuarios realicen la validación del contenido al utilizar la aplicación, mediante la resolución de tareas de validación que consistan en preguntas que permitan validar si la información aportada por otros usuarios es correcta.\\
+
+A continuación se describen aplicaciones con georreferenciación frecuentemente usadas (como se ve en la encuesta preliminar, más adelante), resumiendo sus ventajas y desventajas, para reflejar lo descrito anteriormente:\\
+
+\subsection{Aplicaciones con Georreferenciación}
+
+\begin{itemize}
+ 
+\item \textbf{Foursquare}\\
+
+La aplicación tiene el objetivo de dar a conocer lugares, y que los usuarios los evalúen dándoles puntaje, utilizando la georreferencia para comprobar que los usuarios efectivamente estuviesen ahí. Para motivar a los usuarios a usar la aplicación, ésta otorga medallas o categorías de “alcalde” de un lugar, lo cual se puede compartir a través de las distintas redes sociales. No obstante, esto lleva a que finalmente se pierda el objetivo inicial de la aplicación, ya que en general los usuarios intentan ir muchas veces a un mismo lugar para ser alcaldes, o crean lugares nuevos para ganar medallas, por lo cuál muchas veces no se utiliza de la manera esperada.\\
+
+\textbf{Features:}\\
+\begin{itemize}
+\item Puntaje y comentarios de los lugares
+\item Agregar nuevos lugares
+\item Marcar lugares como visitados
+\item Obtención de medallas por visitar lugares
+\item Se puede compartir los lugares visitados por las redes sociales
+\end{itemize}
+
+\textbf{Limitaciones:} No existe ningún tipo de validación de los lugares agregados, puedo visitar varias veces el mismo lugar (incluso mi propia casa), para intentar obtener medallas.
+
+\item \textbf{Google Maps}\\
+
+Además de servir como un mapa, muestra lugares destacados como restaurants, sitios históricos, etc. y también servicios tales como el Metro. No obstante, se utiliza más para ubicarse, encontrar calles, saber donde se está, etc. que para dar a conocer nuevos sitios, o saber que lugares visitar.\\
+
+\textbf{Features:}
+\begin{itemize}
+\item Datos de casi todos los servicios de las ciudades, clasificación muy minuciosa de los mismos.
+\item Distintas vistas de la ciudad (satelital, calles, etc.)
+\item Permite realizar búsquedas por dirección en el mapa
+\item Se pueden agregar fotos de lugares
+\item Se puede realizar "check-in" o rankear lugares visitados
+\end{itemize}
+
+\textbf{Limitaciones:} Existen alternativas Open Source locales más precisas (Ej: Open Street Map, grupo en Chile: http://www.openstreetmap.cl/). No existe validación para las fotos que se agregan, no hay premios ni incentivos para que el usuario realice aportes, aparte de tener un mapa más completo. En general, es una aplicación más orientada a ver el mapa para ubicarse, que a buscar interacción de algún tipo con el usuario, por lo mismo, la información de ubicación de lugares que tiene, es altamente confiable, por lo que es muy usada.\\
+
+\item \textbf{Ovi Maps}
+
+\textbf{Features:}
+\begin{itemize}
+\item Mapas Descargables, ya sea por WiFi al usarlo en el equipo móvil, o bien descargándolos en un computador de escritorio y subiéndolos al celular, ambas alternativas permiten que pueda funcionar en Modo Offline.
+\item Búsqueda de direcciones
+\item Utilización de GPS como sistema de navegación
+\item Compartir localizaciones mediante redes sociales
+\item Opción de programar alertas vibrantes
+\end{itemize}
+
+\textbf{Limitaciones:} No existe forma de que los usuarios aporten nuevos lugares, o de evaluación y recomendaciones de los mismos.\\
+
+\item \textbf{RunKeeper}\\
+
+Aplicación orientada a deportistas, en particular corredores.
+
+\textbf{Features:}
+\begin{itemize}
+\item Guardar las rutas realizadas.
+\item Compartir las rutas con otros usuarios de la aplicación.
+\item Enviar desafíos a otros usuarios, de superar tu tiempo en una ruta determinada.
+\end{itemize}
+
+\textbf{Limitaciones:} La orientación de la aplicación es distinta a la que se busca, el objetivo no es conocer nuevos lugares o dar información de ellos.\\
+
+\item \textbf{SCVNGR}\\
+
+Aplicación que permite a los usuarios resolver desafíos ubicados en distintos lugares (Locales de comida, universidades, plazas, etc.), los cuales son proporcionados por la empresa que ocupa el lugar, y a cambio de resolverlos se obtienen medallas o premios reales como descuentos en el local.\\
+
+\textbf{Features:}
+\begin{itemize}
+\item Ver en el mapa desafíos puestos por empresas, por ejemplo, McDonalds pone un desafío en uno de sus locales. 
+\item Resolver el desafío si se está en el lugar, por ejemplo, en el desafío de McDonalds aparece un origami, debes ir al local y realizar el origami con la servilleta.
+\item Canjear premios relativos al local si se resuelve al desafío, por ejemplo, en este caso sacas una foto con tu móvil de la servilleta con el origami hecho,y tienes una bebida gratis.
+\end{itemize}
+\textbf{Limitaciones:} Los lugares disponibles, y por supuesto, los desafíos, son impuestos por las empresas, los usuarios no pueden agregar nuevos lugares o desafíos.
+\end{itemize}
+
+\subsection{Aplicaciones con Control de Calidad Colaborativo}
+
+\begin{itemize}
+ \item \textbf{ReCAPTCHA}\\
+
+Aplicación que consiste en una extensión de la prueba Captcha, la cual corresponde al reconocimiento de texto en una imagen, para comprobar que el usuario no es un robot. Recaptcha añade una prueba desafío que permite mejorar la digitalización de los textos. De esta forma, el usuario debe reconocer dos textos, sin saber cual es el que se conoce la respuesta y cual no, de esta forma, se asegura que el usuario intentará responder correctamente, y su validación de la interpretación del texto desconocido es confiable.\\
+
+ \item \textbf{Amazon Mechanical Turk}\\
+
+Es un servicio en internet que permite a los programadores coordinar la realización de tareas que no pueden ser automatizadas. Para ello, existen dos tipos de usuarios, los Requesters, que solicitan tareas llamadas HITs, que requieren intelifencia humana (Human Intelligence Tasks), como por ejemplo, escoger la mejor foto para un producto, o añadir la descripción del mismo, el nombre de los músicos que tocan en un CD, etc. Luego, existen usuarios Workers, que buscan entre las tareas pendientes y las realizan a cambio de dinero ofrecido por el Requester. Para asegurar la confiabilidad de los Workers, los usuarios Requesters pueden poner tareas de prueba, que consistan en tareas para las cuales ellos conozcan la respuesta, o las respuestas que consideran como válidas para esa tarea. De esta forma, el Worker gana reputación dentro de la aplicación mientras más tareas lleve a cabo y dejen conforme al Requester en caso de ser una tarea de prueba.
+
+\item \textbf{Peekaboom}\\
+
+La aplicación se promociona como un juego que además de ser disfrutable, te permite  enseñarle a ver a los computadores mientras lo juegas. El juego consiste, efectivamente, en agregar tags a imagenes, para ello, el juego trata de un usuario ``Boomb'', que obtiene una imagen y le asigna una palabra, luego, un usuario ``Peek`` espera por una imagen. El usuario ''Boom`` mediante clicks sobre la imagen, va revelándole parte de esta al usuario ''Peek`` que debe adivinar a que corresponde, asignándole una palabra. El juego termina cuando ''Peek`` adivina la palabra, y luego viene una nueva imagen y los usuarios cambian roles.
+\end{itemize}
+
+\newpage
+\subsection{Objetivos del Trabajo Dirigido}
+
+Durante el presente trabajo se completó la aplicación colaborativa de georreferenciación, para dispositivos móviles, Tripdroid, determinando, en primer lugar, el enfoque que se le debe dar y las características que debe tener. Esto mediante la opinión de los usuarios acerca de la idea ya planteada para la aplicación, y la elaboración de versiones preliminares de la aplicación para obtener nuevas opiniones basadas en la aplicación en sí, y los avances que vaya teniendo esta.\\
+
+El objetivo del trabajo es concluir si la orientación escogida para la aplicación mediante los resultados de la encuesta preliminar es la correcta, obtener nuevas ideas de parte de los usuarios, y analizar que funcionalidades utilizan más, y cuáles pueden ser añadidas, para definir una vía futura para el desarrollo de la aplicación.
+
+\subsection{Metodología de Trabajo}
+
+Se contaba con una versión Alfa 1 del software, ya descrita, que consistía en un juego de georreferencia, con preguntas relativas al lugar que visitan los usuarios, a partir de esta versión se deseaba desarrollar una aplicación similar, pero definiendo su orientación de acuerdo a la opinión de los usuarios.\\
+
+En primer lugar se realizó una encuesta preliminar a los usuarios acerca de las aplicaciones de georreferenciación ya existentes, sus ventajas y desventajas, cuáles son las características que más valoran de ellas y cuáles consideran que podría tener una aplicación de este tipo.\\
+
+Posteriormente, se elaboró una versión Alfa 2.1 del software a mediados de semestre para que los usuarios lo prueben y entreguen feedback acerca de las características del mismo, la claridad de las interfaces, funcionalidades que le añadirían, etc.
+
+Luego, a partir de todos estos datos, se puede elaboró una versión Alfa 2.2 basada en las opiniones de los usuarios.\\
+
+A continuación se describe la encuesta previa, las características que se espera tenga la aplicación en su totalidad, a partir de los resultados de la encuesta, detallando lo que está implementado en las respectivas versiones, se describirá un resumen de las funcionalidades en la versión alfa, con imágenes y descripción de como se utiliza la aplicación, luego los resultados obtenidos de la prueba de la versión alfa con los usuarios, una descripción de las mejoras realizadas en la versión Alfa 2.2, para finalmente obtener conclusiones del trabajo realizado.\\
+
+\newpage
+\section{Encuesta Previa}
+
+Se realizó una encuesta a 30 usuarios, de los cuales 16 tienen Smartphone, es decir, un teléfono con más aplicaciones que un celular común (multitarea, acceso a internet vía WiFi o 3G, dispositivos extra como cámara, acelerómetro, GPS, etc.), y el resto, al menos utiliza internet en su celular, y además, se cuenta con 7 usuarios expertos (es decir, con algún tipo de experiencia en desarrollo de aplicaciones móviles).\\
+
+La encuesta tuvo 2 preguntas cuantitativas, la primera sobre que aplicaciones móviles con georreferenciación han utilizado los usuarios y otra acerca de qué características valorarían más dentro de una aplicación de este estilo. El resto de las preguntas solicitaba información cualitativa acerca de sus preferencias sobre una aplicación de georreferenciación, y su opinión sobre las actuales.\\
+
+La encuesta fue enviada vía correo electrónico y se pensó con el objetivo de obtener una opinión acerca de qué esperaría un usuario de una aplicación de este estilo, sin dar a conocer la idea del proyecto a desarrollar.\\
+
+A continuación se describen y analizan los resultados obtenidos de la encuesta.\\
+
+\subsection{Resultados Cuantitativos}
+
+Número de personas que seleccionaron las alternativas señaladas, entre paréntesis se destaca cuantos de los usuarios que seleccionaron esa alternativa, corresponden a usuarios expertos. Las opciones están ordenadas por la cantidad de gente que las seleccionó (de mayor a menor).\\
+
+\textbf{Que consideras (o considerarías) más importante en una aplicación de este estilo?}\\
+
+\begin{tabular}{| l | c |}
+\hline
+    Entregar Información de los lugares & \textbf{21(7 Expertos)} \\ \hline
+    Confiabilidad de la Información & \textbf{19(6 Expertos)} \\ \hline
+    Rapidez de la Aplicación & \textbf{17(3 Expertos)} \\ \hline
+    Recomendar lugares (restaurantes, museos, etc.) & \textbf{15 (5 Expertos)}\\ \hline
+    Poder aportar información o características a la aplicación & \textbf{6(3 Expertos)}\\ \hline
+    Desafíos (competencias entre usuarios, obtener premios, etc.) & \textbf{6(2 Expertos)}\\ \hline
+    Permitir compartir con redes sociales & \textbf{4(1 Experto)}\\ \hline
+    Poder aprender utilizándola (valor educativo) & \textbf{3(1 Experto)} \\
+    \hline 
+\end{tabular}\\
+
+\textbf{Usas alguna aplicación que use geolocalización? (Es decir, que se use el lugar físico donde estás, como Google Maps, Foursquare, Gowalla, etc.)} \\
+
+\begin{tabular}{| l | c |}
+\hline
+Google Maps & 21 \\ \hline
+Ninguna & 9 \\ \hline
+Foursquare & 4 \\ \hline
+Ovi Maps & 1 \\ \hline
+RunKeeper & 1 \\ \hline
+\end{tabular}
+
+%\newpage
+%\begin{figure}[h] %[h] para here [b] para bottom [t] para top
+%\hspace{-1cm}
+%\includegraphics[width=400]{./hrtf.jpg}
+%\caption{HRTF}
+%\end{figure}
+
+\subsection{Resultados Cualitativos}
+
+En este caso, en la encuesta existe una pregunta acerca de las aplicaciones ya existentes, y otra para obtener feedback sobre el proyecto en sí. Se muestran las respuestas más interesantes o frecuentes dadas por los usuarios.\\
+
+\subsubsection{Sobre Aplicaciones Actuales}
+
+Se le solicitó a los usuarios su opinión sobre Aplicaciones actuales de este estilo, y se resumen a continuación algunas opiniones, al menos las más similares entre la mayoría:\\
+
+\textbf{No me Gusta:}\\
+
+\begin{itemize}
+\item Consumen mucha batería.
+\item Algunas funcionan con A-GPS y otras no.
+\item Dan mucha información inútil.
+\item No aparece información sobre los servicios del Metro.
+\item Es difícil encontrar la información que uno requiere.
+\item Poca Privacidad.
+\item Mala Interfaz.
+\end{itemize}
+
+\textbf{Me Gusta:}\\
+
+\begin{itemize}
+\item Combinan la realidad física con una aplicación virtual.
+\item Rapidez para buscar lugares (en particular, Foursquare).
+\item Práctico, se encuentra finalmente lo que se busca.
+\item Se ve de inmediato en un mapa donde se está.
+\item Integración con Brújula para saber donde voy.
+\end{itemize}
+
+\subsubsection{Sobre el Proyecto}
+
+A continuación se muestran los principales comentarios dados por los usuarios en la encuesta, en las preguntas que involucraban opinar acerca del proyecto. Los resultados están ordenados desde los comentarios que más veces se repitieron a los que menos.\\
+
+\begin{tabular}{| p{10cm} | c |}
+\hline
+Recomendación Colaborativa de lugares & \textbf{3(1 Experto)} \\ \hline
+Recomendar lugares de acuerdo a los gustos del usuario (según el tipo de lugares que suele visitar) & \textbf{3(1 Experto)} \\ \hline
+Que se vean opiniones de otras personas sobre los lugares & \textbf{3(1 Experto)} \\ \hline
+Juego simple, el menor tiempo posible en el equipo & \textbf{3} \\ \hline
+Buscar una dirección y saber que hay cerca (sin necesidad de estar ahí) & \textbf{2(2 Expertos)} \\ \hline
+Recomendar lugares según el contexto (momento del día, sector en que está el usuario) & \textbf{2(1 Experto)} \\ \hline
+Información/valor histórico del lugar en que estás & \textbf{2(1 Experto)} \\ \hline
+Mostrar y/o poder agregar fotos de los lugares & \textbf{2(1 Experto)} \\ \hline
+Interactuar con otros usuarios de la app que estén cerca & \textbf{2} \\ \hline
+Agregar el Metro, Cajeros Automáticos, Centros Bip & \textbf{2} \\ \hline
+Privacidad & \textbf{2} \\ \hline
+Realizar una versión más “turística” y una más “educativa” & \textbf{1(1 Experto)} \\ \hline
+Usar la brújula & \textbf{1(1 Experto)} \\ \hline
+Incluir datos sobre el Clima según ubicación & \textbf{1} \\ \hline
+Tener registrados tiendas, almacenes y precios & \textbf{1} \\ \hline
+Mostrar ruta de lugares ya visitados & \textbf{1} \\ \hline
+Poder dibujar encima(tener capas guardadas con dibujos, incluso puede ser colaborativo) & \textbf{1} \\ \hline
+\end{tabular}
+
+\subsection{Análisis de Resultados}
+
+Se observa que en general los usuarios tienen interés por obtener datos útiles para ellos, es decir, información sobre los lugares que les interesen, recomendaciones, conocer la ubicación de distintos servicios, etc. Además de valorar bastante la confiabilidad de la información que se les entrega, y la rapidez de la aplicación en sí (considerando también como rapidez el hecho de que no requiera estar mucho tiempo atento al equipo para usar la aplicación), todos estos aspectos, que fueron los más votados, se condicen con las opiniones recibidas, ya que los usuarios recomendaron que la aplicación requiera estar poco tiempo mirando el equipo, que permitiera comentar sobre los lugares además de dar información, que recomiende lugares de acuerdo a los gustos del usuario, etc.\\
+
+Llama la atención el poco interés por el aspecto social de una aplicación así, y de hecho, valorar la privacidad de la misma, por lo cual se estima que este debe ser un aspecto importante para los usuarios cuando se trata de saber donde están ubicados.\\
+
+\newpage
+\section{Aplicación Propuesta}
+
+\subsection{Descripción General}
+
+Basado en los resultados de la encuesta, se elaborará una versión Alfa 2.1 de la aplicación de modo que muestre lugares de interés en un mapa al usuario, y se permita al usuario agregarles tags, para garantizar la confiabilidad de dicha información, se utilizará una validación colaborativa no centralizada de ésta, llevada a cabo por los mismos usuarios mediante tareas de validación que aparezcan durante el uso de la aplicación, con un administrador que revise los resultados de estas tareas.\\
+
+Es decir, a grandes rasgos, la ubicación permitiría al usuario, observar distintos lugares en el mapa y ver su información (es decir, un acceso a un grupo de datos base), además de poder comentar, proponer nuevos lugares, etc.\\
+
+A continuación se describen en detalle estos aspectos, mencionando lo que se implementará en ambas versiones.\\
+
+\subsection{Elementos de la Aplicación}
+
+\subsubsection{Lugares}
+
+Por lugares se entiende a todo punto en el mapa que tiene información asociada en el sistema.\\
+
+Un Lugar posee como atributos:\\
+
+\begin{itemize}
+ \item \textbf{Nombre} (el nombre del lugar, por Ej: Cerro Santa Lucía.)
+ \item \textbf{Coordenadas GPS} (que determinan el centro de la posición del lugar en el mapa)
+ \item \textbf{Tags} (que definen las características del lugar, por Ej. si es la Plaza de Armas puede tener como tags "plaza", ``estatuas``, etc.
+\end{itemize}
+
+El usuario, al iniciar la aplicación verá el mapa de la ciudad con los lugares marcados por algún ícono.\\
+
+Para la versión Alfa 2.2 se distinguen mediante 2 íconos de distinto color, lugares de interés cultural tales como universidades, plazas, museos, etc. y servicios, tales como supermercados o cajeros automáticos.
+
+\subsubsection{Usuarios}
+
+Se define usuario como cualquier persona que utilice la aplicación y que no sea un administrador de la misma.\\
+
+Por ahora, en ambas versiones, todos los usuarios de la aplicación deben estar registrados en ella.\\
+
+\paragraph{Funcionalidades para el Usuario}
+
+\subparagraph{Acceso a Datos}
+
+Por defecto, al iniciar la aplicación, el usuario verá el mapa centrado en su ubicación actual, con los lugares que estén cerca de él marcados con íconos distintivos sobre éste.\\
+
+Al hacer click a un lugar el usuario podrá ver en una pequeña ventana emergente, el nombre del lugar, y los tags del mismo, y tendrá la opción de agregar tags al lugar.\\
+
+Para la versión Alfa 2.1, debe estar implementada la vista de los lugares cercanos, y que muestre al menos sus tags.\\
+
+\subparagraph{Tareas de Validación}
+
+Tareas solicitadas por el sistema al usuario, que consisten en dos tipos de preguntas, validaciones para conocer la veracidad de información aportada por otro usuario, y desafíos para verificar la honestidad del usuario actual. En la sección posterior (4.2.3), se describe en detalle el sistema de validación a implementará.\\
+
+La idea general es que mientras el usuario se encuentre utilizando la aplicación, de vez en cuando ésta le solicite responder una validación o desafío, ofreciéndole siempre la opción de pasar y no responder la pregunta.\\
+
+Para la versión Alfa 2.1 se tiene objetivo de implementar la validación de tags.\\
+
+El objetivo de esta validación es saber si los tags que le han agregado los usuarios a un lugar en específico sean correctos.\\
+
+La forma de realizarse, es que mientras use la aplicación, cuando el usuario desee visitar un lugar, se le muestra una pregunta del tipo "es correcta la relación tag:lugar ?". El usuario puede responder afirmativamente, negativamente, o pasar el desafío, es decir, no responder la pregunta.\\
+
+Para la versión Alfa 2.2 se espera tener además desafíos para verificar la capacidad de validar honestamente de parte del usuario.\\
+
+\subparagraph{Visitar}
+
+Cuando un usuario se encuentra en un rango de coordenadas cercano a un lugar, al hacer click sobre él aparece además la opción de marcar como visitado.\\
+
+El objetivo es que esto esté implementado la versión Alfa 2.1.\\
+
+\subparagraph{Agregar Nuevo Tag}
+
+Al visitar un sitio, se ofrece la opción de agregar un nuevo tag a este, el cuál no aparecerá de inmediato, sino hasta que sea validado.
+
+Esto estará implementado en la versión Alfa 2.1.
+
+\subparagraph{Agregar Nuevo Lugar}
+
+Cuando el usuario está ubicado en cualquier sitio físico, puede agregar su ubicación GPS actual como un nuevo Lugar de la aplicación, llenándo los datos correspondientes al nombre y los tags del lugar.\\
+
+Esto estará implementado en la versión Alfa 2.2.\\
+
+\subsubsection{Administradores}
+
+Los usuarios administradores, además de las mismas opciones de los usuarios comunes, deben tener la opción de visualizar los datos estadísticos de cuantas personas han respondido validaciones para cada tag, y qué número de respuestas fueron afirmativas o negativas, dándole la opción de validar como cierto o falso cada uno de estos.\\
+
+Esto estará implementado en la versión Alfa 2.1.\\
+
+\paragraph{Experiencia}
+
+Cada usuario tendrá asignado un puntaje, llamado experiencia, que aumentará a medida que resuelva desafíos o realice aportes a la aplicación y será visible en el mapa para el usuario, esto para obtener beneficios, de la forma que se explica a continuación.\\
+
+\subsubsection{Beneficios}
+
+Los beneficios que obtiene el usuario a cambio de resolver tareas de validación, corresponden a ganar o perder experiencia, la cuál le permite acceder a nuevos lugares en el mapa. En la versión alfa se tendrá implementada la experiencia sumándose a medida que se respondan validaciones, para la versión Alfa 2.2 se implementará acceso a nuevos lugares al obtener cierta cantidad de experiencia, y además restar experiencia en caso de responder mal un desafío.\\
+Las medallas podrían ser canjeables por otros beneficios como el acceso a información y el acceso a otras features de la aplicación.\\
+
+\newpage
+\subsection{Sistema de Validación Colaborativo}
+
+La mayor ventaja competitiva de esta aplicación, es la propuesta de realizar una validación colaborativa y descentralizada, de la información existente y aportada a la aplicación, por los usuarios de la misma. Lo cual agrega valor a la aplicación, ya que aumenta la confiabilidad de la información, permite aportar información a los usuarios, la cuál es validada por la interacción de los mismos con la aplicación, lo que entrega un modelo más escalable que el de validación centralizada, ya que permite automatizar varias tareas de validación.\\
+
+A modo de descripción general, el proceso de validación colaborativa de información, tiene los siguientes elementos:\\
+
+\begin{itemize}
+ \item \textbf{Información Validada:} Información de la cual se conoce con seguridad su grado de certeza, es decir, si dicha información es correcta o no. Los usuarios tienen acceso a parte de ella, y luego, con el uso de la aplicación obtendrán como beneficio acceder a más información.
+ \item \textbf{Información Incierta:} Información aportada por los usuarios, de la cual no se tiene conocimiento de su correctitud.
+ \item \textbf{Tareas de Validación:} Preguntas formuladas al usuario de la aplicación, aleatoriamente alternadas entre 2 tipos:
+  \begin{itemize}
+   \item \textbf{Validaciones:} Preguntas creadas a partir de información incierta, con el objetivo de conocer si dicha información es correcta o no
+   \item \textbf{Desafíos:} Preguntas creadas a partir de información validada como correcta o incorrecta, para verificar la capacidad y honestidad del usuario para validar información.
+  \end{itemize}
+  El usuario recibirá beneficios si responde correctamente los desafíos, y penalizaciones si lo hace de manera incorrecta. Esto será explicado con mayor profundidad a continuación.
+\end{itemize}
+  
+  En la versión Alfa 2.1 sólo se tendrán validaciones, las cuales siempre entregan beneficios al usuario, esto sólo con el objetivo de mostrar a los usuarios la forma de realizarlos. En la versión Alfa 2.2 se encuentran implementadas ambas tareas de validación, las cuales consiste en la realización de una pregunta al usuario, la cual corresponderá a una validación de información con probabilidad del 70\%.\\
+
+  Siempre que la pregunta sea respondida (es decir, el usuario no elija la opción de pasar), recibirá experiencia como beneficio, salvo cuando la pregunta sea un desafío y lo responda de forma errónea, en cuyo caso perderá experiencia como penalización.\\
+  
+  Esto puede traducirse en una mala experiencia para el usuario cuando utilice la aplicación, sin embargo, es necesario castigar de alguna forma la deshonestidad al validar para evitar que ésta sea llevada a cabo reiteradamente sin consecuencias.\\
+\newpage
+En síntesis, se puede observar que el modelo de validación presentado se basa en información validada, la cual puede ser correcta o incorrecta, e información incierta, de la cuál no se sabe su verosimilitud. Y luego, se generan desafíos a partir de estos tipos de información, por lo tanto, existen las siguientes situaciones posibles, según el objetivo del desafío de acuerdo al diagrama:\\
+
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=200pt]{./imgs/Info.png}
+\caption{Tipos de información y desafíos}
+\end{center}
+\end{figure}
+
+\begin{itemize}
+  \item \textbf{Validación a partir de información incierta:} En este caso, el desafío tiene el objetivo de conocer la correctitud de cierta información aportada por algún usuario. Es por ello, que como resultado de las respuestas de este desafío, y utilizando algún criterio de validación (profundizados en la siguiente sección), finalmente se determinará si la información entregada es correcta o incorrecta, y de esa forma pasará a estar validada.\\
+ \item \textbf{Desafíos:} Estos son generados a partir de información validada correcta o incorrecta. Si el usuario responde el desafío diciendo que la información es correcta o incorrecta según corresponda (ya que al ser información validada se conoce su veracidad), obtiene algún beneficio, de lo contrario, recibe alguna penalización. De esta forma se verifica la confiabilidad de validar información del usuario.
+\end{itemize}
+
+De esta forma, en el último caso descrito, hay un traspaso de información incierta a validada, luego de saber si ésta era correcta o incorrecta mediante los desafíos.\\
+
+A continuación se describe un ejemplo del proceso de validación en la aplicación.
+
+\subsubsection{Proceso de Validación}
+
+En la aplicación final se pretende que exista validación de la ubicación de los lugares, sus tags, y la información de los mismos. En este caso, se mostrará un ejemplo de validación de tags, ya que es la funcionalidad que se quiere obtener en las versiones preliminares a desarrollar durante este trabajo dirigido.\\
+
+Supongamos un usuario, Arturo, se encuentra visitando la Plaza de Armas, y utiliza la aplicación en su móvil. Dentro de las opciones que le muestra el sistema, existe la opción de agregar un tag al lugar, luego, el proceso seguiría de esta forma:\\
+
+\begin{itemize}
+ \item Supongamos que en el sistema existe como información validada la relación entre el lugar ''Plaza de Armas`` y los tags ''plaza``, ''estatua`` y ''artistas``.
+ \item Arturo agrega el tag ''fuente`` a la Plaza de Armas, ya que vio que había una fuente en ella, y no estaba entre los tags del lugar.
+ \item El tag aún no aparece en el sistema, pero es añadido a la Base de Datos como información aún no validada.
+ \item Otro usuario, Beatriz, visita la plaza de armas, al usar la aplicación, recibe una tarea de validación en la que se le pregunta si cree que el tag ''fuente`` es un tag válido para Plaza de Armas. Beatriz puede responder que este tag es correcto, incorrecto, o bien, pasar sin responder.
+ \item Luego de responder, Beatriz marca como visitada la Plaza de Armas en la aplicación, y aparece un mensaje que le indica que ha ganado 3 puntos de experiencia.
+ \item La misma pregunta de validación creada a partir del tag aportado por Arturo, es enviada a varios usuarios que visitan la Plaza de Armas
+ \item De acuerdo al criterio de validación escogido, los cuales serán descritos en la siguiente sección, cuando se tenga un número de respuestas razonables, se determina si el tag es correcto o no, dependiendo de las respuestas de los usuarios. En este caso, si el Administrador del sistema observa que el alrededor del 90\% de los usuarios que respondió la validación del tag ''fuente``, indicaron que era correcto asociarlo a Plaza de Armas, agregará este tag a los tags validados para este lugar.
+ \item Por lo tanto, el tag ''fuente'' pasa a ser parte de los tags de Plaza de Armas, luego, pasa a ser información validada, y en este caso, es correcta, y será visible para los usuarios que visiten la Plaza de Armas de ahora en adelante.
+
+\end{itemize}
+
+En el ejemplo descrito, Beatriz recibió una tarea de validación sobre información incierta, aportada por otro usuario. Otro caso posible, hubiese sido que Beatriz recibiera un desafío, por ejemplo, si el tag ``plaza'' es válido para Plaza de Armas. Como es información validada como correcta, si Beatriz responde que la información es correcta, recibirá puntos de experiencia como beneficio, no obstante, en caso de contestar de forma errónea, en este caso, que la relación es incorrecta, perderá puntos de experiencia.\\
+
+\newpage
+\subsubsection{Criterios de Validación}
+
+Para la versión Alfa 2.1 desarrollada en el contexto de este trabajo dirigido, sólo se implementará la validación mediante un administrador, eso mediante una interfaz que le permita observar cuantos usuarios han evaluado un tag como correcto(``SI``) o como incorrecto(''NO``):\\
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=180pt]{./imgs/TripdroidAdmin2.png}
+\caption{Menú Administrador}
+\end{center}
+\end{figure}
+
+En la versión Alfa 2.2 a desarrollar se tendrá implementado un caso de validación automática, el cuál es validar como correctos o incorrectos todos los tags que hayan recibido al menos un 90\% de respuestas con esa opción, y tengan por lo menos 10 respuestas entregadas. No obstante, será implementada de manera que debe ser activada por el administrador, es decir, en el menú de administración  existirá la opción de validar automáticamente todos los tags que cumplan esa condición sin la necesidad de revisarlos.\\
+
+\subsubsection{Beneficios y Penalizaciones}
+
+Para motivar a los usuarios a responder de forma confiable los desafíos, estos deben obtener algo a cambio de resolverlos, en este caso, mayor acceso a información ya validada.\\
+
+En el caso de la aplicación descrita en este informe, para la versión Alfa 2.1 se tendrá desarrollado un sistema de puntaje (experiencia) y niveles por usuario, en el cual, cada vez que un usuario responda una tarea de validación obtiene 3 puntos de experiencia, y al alcanzar cierto número de puntos, asciende de nivel, lo que le permite acceder a más lugares en el mapa. En particular, se tienen definidos lugares que ven todos los usuarios y lugares a los que tienen acceso usuarios en el nivel 2 hacia arriba. Luego, mientras más preguntas sean respondidas, el usuario puede ganar acceso a ver más lugares de la ciudad en el mapa.\\
+
+Para la versión Alfa 2.2 se desea mejorar este sistema de puntaje, verificando la correctitud de la respuesta del usuario para el caso de los desafíos, restándole 3 puntos de experiencia en lugar de sumarlos en caso de que responda en forma errónea.\\
+
+Además, para la versión Alfa 2.2 se implementará el aumentar el número de desafíos cada vez que un usuario responda erróneamente a uno de ellos.\\
+
+\subsubsection{Consideraciones del Sistema de Validación}
+
+El sistema propuesto para la validación, debe tener contempladas diversas situaciones que pueden ocurrir en el normal uso de la aplicación, o bien, por mal uso de la misma, las cuales pueden afectar la correcta validación de la información, como por ejemplo:\\
+
+\begin{itemize}
+\item Que un usuario entregue constantemente información incorrecta y la valide el mismo u otros usuarios que conozca.
+\item Un mismo usuario respondiendo varias veces el mismo desafío.
+\item Utilización de un script para responder desafíos y ganar puntaje.\\
+
+En la versión Alfa 2.2 a desarrollar, para evitar el mal uso de la aplicación, se implementarán tareas de validación basadas en información validada, las que permiten saber si el usuario está validando de forma confiable, además, como se mencionó, una forma de penalización a implementar es aumentar el número de desafíos que reciba el usuario cada vez que quiera visitar un lugar, en caso de haber contestado erróneamente alguna validación, lo que evita que un usuario responda aleatoriamente o mediante un script para ganar puntaje de forma automática.\\
+
+\item Que los usuarios respondan repetitivamente una validación del mismo lugar.\\
+
+Esto es algo normal dentro del uso de la aplicación, y no un mal uso de la misma. Por ejemplo, si uno o más usuarios visitan un mismo lugar a diario, como la universidad, muy probablemente ellos mismos aportaran información y tags sobre ese lugar, y ellos mismos validarán constantemente la información aportada por sus pares, lo que podría ocurrir es que constantemente se les pregunte por el mismo tag, por lo tanto, se tendrían muchas respuestas en el sistema, pero pueden ser todas del mismo usuario. No obstante, para evitar esto se tendrá una relación binaria entre tags y lugares, de modo que no necesariamente se les pregunte por los tags que han sido asociados a ese lugar por otros usuarios, sino que se les pueda preguntar a través de un desafío si un tag cualquiera en el sistema puede corresponder a ese lugar. Esto se implementará de modo que al agregar un nuevo lugar al sistema, automáticamente se agregan desafíos para ese lugar con el resto de los tags almacenados.\\
+\end{itemize}
+
+Finalmente, cabe señalar que el objetivo de la aplicación no es garantizar seguridad perfecta dentro de la misma, pero sí la mayor confiabilidad posible de la información existente en ella, por lo cuál el objetivo es buscar la mejor forma de minimizar la información errónea sin alterar demasiado el normal uso de la aplicación de los usuarios. De esta manera, la idea es que un usuario reciba un desafío como máximo en el uso normal de la aplicación, y sólo aumentarán en caso de que responda erróneamente, de modo de no sobrecargarlo con éstos en busca de mayor seguridad.
+
+\newpage
+\section{Calendario}
+
+Para cumplir los objetivos señalados, la idea es desarrollar la versión Alfa 2.1 y luego de ello, realizar una prueba con usuarios de ella para así elaborar una segunda versión basada en las opiniones de los usuarios.\\
+
+Luego, el calendario para efectos del Trabajo Dirigido fue el siguiente:\\
+
+\begin{itemize}
+\item \textbf{2 - 20 Mayo:} Elaboración versión Alfa 2.1, descrito en la siguiente sección.
+\item \textbf{6 Junio - 30 Junio:} Encuestar usuarios que utilicen esta versión de la aplicación y realizar análisis de resultados.
+\item \textbf{1 Julio - 10 Julio:} Definir el sistema de validación colaborativa que se espera tener en la aplicación y desarrollar las mejoras más solicitadas por los usuarios luego de la encuesta. (Estas fueron detalles de la interfaz, como destacar más los tags, y principalmente, que los desafíos fueran relativos al lugar que se está visitando).
+ \item \textbf{11 Julio - 30 Julio:} Elaborar versión Alfa 2.2 basado en los resultados obtenidos. Desarrollando las siguientes funcionalidades:
+  \begin{itemize}
+  \item \textbf{11 Julio - 20 Julio:} Permitir agregar lugares nuevos al usuario, centrar el mapa en su ubicación actual e indicarla en el mismo. Crear desafíos con tags en el sistema automáticamente cada vez que se agregue un nuevo lugar.
+  \item \textbf{21 Julio - 30 Julio:} Agregar tareas de validación basadas en tags ya validados, o de tags que no necesariamente estén relacionados con el lugar. Sistema de suma y resta de puntaje de acuerdo a las respuestas de las validaciones.
+  \end{itemize}
+ \item \textbf{31 Julio - 12 Agosto:} Crear un video ilustrativo de un caso típico de la aplicación y terminar informe. 
+\end{itemize}
+
+\newpage
+\section{Conclusiones}
+
+Se logró determinar mediante una encuesta a usuarios de aplicaciones de georreferencia que la confiabilidad y calidad de la información de estas aplicaciones es un punto importante para ellos, y así se elaboró una aplicación  de este tipo que incluye validación colaborativa de la información para garantizar en la mayor medida posible la confiabilidad de la información evitando sacrificar por ello la usabilidad de la misma.\\
+
+La prueba con usuarios se considera exitosa ya que la mayor parte de estos no mostró inconvenientes al comprender y responder las tareas de validación, salvo la observación de restringir las preguntas al lugar visitado, lo cual fue implementado en la versión Alfa 2.2.\\
+
+Esto permite concluir que la orientación escogida es correcta y ofrece numerosas posibilidades para continuar el desarrollo de la aplicación, las cuales son descritas en los anexos. De esta forma, si bien se considera que falta realizar más pruebas, y mejorar la seguridad o reducir la posibilidad de errores que se puedan producir en el sistema implementado, se pudo aplicar el control de calidad colaborativo exitosamente en una aplicación de georreferencia.\\
+
+\newpage
+\appendix
+\section{Otras opiniones de Usuarios}
+
+Luego de la realización de la encuesta, se le pidió su opinión a algunos usuarios luego de leer este informe preliminar acerca de la aplicación, y así obtener feedback de su parte, que se presenta a continuación.\\
+
+\textbf{Usuario 1:}\\
+
+\begin{quote}
+\textit{Creo que lo más importante en las aplicaciones de este tipo es la información que entrega y la confiabilidad de esa información, de nada sirve tener una cantidad inmensa de lugares en los que se pueda explorar si no hay información importante con respecto a esos lugares, así como también es importante que la información esté actualizada ya que a veces es común encontrarse con lugares que no se encuentran donde se menciona en las aplicaciones, esto debido a los cambios que la gente va realizando. Con respecto al último punto se puede señalar también que es un defecto de las aplicaciones de geolocalización el que exista duplicidad de lugares, es común ir a algún lugar frecuente como alguna estación de metro o alguna facultad se pueden observar lugares con nombres similares o repetidos, que simplemente no aportan mayor información a la aplicación.\\}
+
+\textit{Uno de los principales problemas encontrados más allá del tema de la interfaz, es el tema de consumo de la batería del gps y la propia exactitud del dispositivo al momento de encontrar lugares, son problemas que podrían ocurrir en aplicaciones de este tipo que tienen que ser consideradas al momento de desarrollar la aplicación, ya que son las principales críticas que se realizan en el tema de navegación.\\}
+
+\textit{Con respecto a la interfaz también se requiere una aplicación que tenga acceso sencillo, rápido y sea intuitivo su uso, que no complique las funciones y tenga un diseño simple, en términos de usabilidad, principalmente la idea es poder acceder de manera rápida a las necesidades particulares del usuario, en cuanto a búsqueda y exploración de lugares.\\}
+
+\textit{En términos de integración con otras aplicaciones, hay que tratar de definir ciertos alcances, como por ejemplo redes sociales, que es lo que se busca transmitir y si simplemente será necesaria la función de compartir ciertas locaciones, si se pueden incorporar datos adicionales, más allá de compartir un link o un anotación referenciada a un lugar en particular. Se tiene que ver la forma en que se puede motivar a los usuarios finales para poder ir compartiendo los lugares a medida que vayan siendo explorados, más allá de un juego de recolección de medallas (como podría ser el caso de SCVNGR o foursquare que ya ofrecen una dinámica similar) así como también sería bueno ir integrando las funcionalidades con valoraciones (como es el caso de Google Hotpot (Places)) o integrarlo con imágenes (como Gowalla), la idea es poder ir generando una base amplia de información y que a la vez sea útil, integrada, de fácil acceso a través de una interfaz simple.\\}
+
+\textit{La idea de los desafíos también está ligada al foco de SCVNGR que posee sus propios desafíos de georreferenciación y los mismos usuarios pueden ir incorporando, con lo que se puede desarrollar algo que vaya en la línea de esa aplicación, si se quiere integrar el desarrollo a través de los desafíos y la exploración de lugares.\\}
+
+\textit{Sería bueno en el futuro poder agregar soporte a tecnologías NFC (Near Field Communication) o bluetooth dependiendo de las cercanías con ciertos locales, además de los clásicos especiales y alianzas estratégicas con proveedores que permitan generar ofertas a través de los check-in que se puedan generar a través de la aplicación.\\}
+
+\textit{También es importante presentar facilidad para poder administrar lugares, así como también seguridad que permita mantener información confiable sin que sea alterada por terceros, localización de lugares cercanos y generación de filtros de exploración, de tal manera que pueda presentar mayor facilidad frente a la búsqueda.\\}
+
+\textit{Hay muchas opciones más y otras formas para poder aprovechar el uso de la georreferenciación pero por ahora esos son los comentarios básicos, en general es una integración de lo mejor de los diferentes servicios actuales.\\}
+\end{quote}
+
+\textbf{Usuario 2:}\\
+
+\begin{quote}
+\textbf{Idea general:}\\
+
+\textit{Desafíos validación: ¿Quién los hace? ¿Quién valida los desafíos de validación? ¿Acá a lo mejor tendría sentido lo de los tipos con más puntos? Creo que si la responsabilidad cae en los administradores es muy restringido.\\}
+
+\textbf{Lugares:}\\
+
+\textit{No me queda clara la idea de la distancia a un lugar como criterio de validación. Creo que es demasiado difícil que alguien vaya a un lugar muy lejano a validar algo. Sin embargo, de acá surge la idea de guardar los desafíos para poder completarlos después.\\}
+
+\textbf{Validación:}\\
+
+\textsl{Validación de tags:} \textit{Quiźas sería útil una modalidad en que puedes seleccionar los tags a validar y los que no, para no descartar por completo la pregunta.\\}
+
+\textsl{Validación de información:}\textit{ ¿Cómo está dispuesta la información? En esta parte dice que se validan por párrafos, ¿qué pasa con la integridad de la información? ¿Es una especie de Wikipedia? Considerando la idea de tags y desafíos, quizás sería útil tener información "inteligente". Además facilitaría la creación de desafíos automáticos.\\}
+
+\textsl{Escala de puntaje:} \textit{Aunque aún no está definida, considerando la variedad de lugares, sería interesante tener puntajes por categorías. O sea, puntaje por ubicación, por calidad de servicio, etc. Como las estrellas en los hoteles.\\}
+
+\textbf{Premios:}\\
+
+\textsl{Puntaje:} \textit{en lo personal, no me gusta la idea de mayor acceso a información con más puntaje, considerando que es una aplicación colaborativa, prefiero la accesibilidad a features.}
+\textsl{Plugins:} \textit{¿Como es este plugin de dibujo? ¿Es desechable? ¿Los usuarios podrán guardar sus dibujos? Similar a los mapas que se pueden guardar en google maps.}
+\end{quote}
+
+
+\newpage
+\section{Tripdroid Alfa 2.1}
+
+\subsection{Resumen}
+
+La versión Alfa 2.1 tiene las siguientes funcionalidades:
+
+\begin{itemize}
+\item Cuatro lugares identificados en el mapa.
+
+\item Validaciones de tags de los lugares, con el objetivo de mostrar una tarea de validación al usuario de prueba.
+
+\item Visitar lugar si se está cercano.
+
+\item Permitir que el usuario agregue tags a los lugares ya existentes, para probar la validación de los mismos.
+
+\item Aumento del puntaje por usuario al responder validaciones.
+\end{itemize}
+
+Se estima que con estas mínimas funcionalidades se puede presentar al usuario de prueba una versión de la aplicación que represente a grandes rasgos el objetivo de la aplicación y le permita determinar si es simple de entender y usar, y además realizar propuestas sobre como cree que se puede usar la aplicación o aportar nuevas ideas en general.
+
+\subsection{Descripción}
+
+Para efectos del desarrollo, se eligió desarrollar en el Sistema Operativo Android, debido a que era el de más fácil acceso en cuanto a disponibilidad de móviles para desarrollar, y móviles más comumento utilizados por los usuarios.\\
+
+La aplicación tiene un lado servidor y el lado cliente, que corresponde a la aplicación en el equipo.\\
+
+Se describe a continuación el diseño de ambas partes.
+
+\subsubsection{Cliente}
+
+Una aplicación Android se encuentra definida por Actividades (Activity de ahora en adelante), e Intents.\\
+
+Una \textit{Activity} (es decir, una clase de la aplicación que hereda de la clase Activity) se presenta al usuario como una ventana. Esta clase crea una ventana que muestra una interfaz de usuario, vale decir, corresponden a todas las ventanas de una aplicación. \\
+
+Un \textit{Intent} es una clase que permite especificar una Activity a ejecutar, llamando a uno de los métodos de la clase Activity con ese Intent de parámetro.\\
+
+Luego, en cada Activity existen Intents hacia otras actividades. A continuación se muestra un diagrama con las Activities de la aplicación y los Intents reflejados mediante flechas entre las Activities.\\
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=400pt]{./imgs/TripdroidActivities.png}
+\caption{Activities de la Aplicación}
+\end{center}
+\end{figure}
+
+\newpage
+Descripción de las Activities:\\
+
+\paragraph{LoginUserActivity:} Contiene formulario para el registro y login de Usuario. Se valida enviando los datos de usuario y password al servidor para comprobar si el usuario existe.
+
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=180pt]{./imgs/TripdroidLogin.png}
+\caption{Login y Registro}
+\end{center}
+\end{figure}
+
+\newpage
+\paragraph{StartMenuActivity:} Menu inicial que contiene enlaces a los Datos del Usuario, Ver el Mapa, o Administrar en caso de que el usuario sea un administrador.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=180pt]{./imgs/TripdroidStartMenu.png}
+\caption{Menú de Inicio}
+\end{center}
+\end{figure}
+
+\paragraph{MyDataActivity:} Menú que resume los datos del usuario, su nombre, correo y experiencia.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=180pt]{./imgs/TripdroidDatos.png}
+\caption{Datos del Usuario}
+\end{center}
+\end{figure}
+
+\newpage
+\paragraph{AdministrarTagsActivity:} En caso de que el usuario sea un administrador, tiene acceso a esta actividad, la cual muestra una lista con los tags propuestos por los usuarios, además de los votos que han recibido como correctos o incorrectos para que el administrador pueda ingresarlos al sistema o no.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=180pt]{./imgs/TripdroidAdmin.png}
+\caption{Validación Tag}
+\end{center}
+\end{figure}
+
+\paragraph{ListPlacesActivity:} Actividad que carga el Mapa y los lugares que estén cargados en la aplicación, con sus tags e información. El usuario puede visitar o agregar tags a los que se encuentren cercanos a su ubicación actual. Esta actividad funciona mediante las siguientes clases:\\
+
+\begin{itemize}
+ \item \textbf{SitesOverlay:} Clase que carga el mapa y los lugares.
+ \item \textbf{MyLocationListener:} Thread que lee la ubicación actual del usuario mediante GPS
+ \item \textbf{PopupPanel:} Ventana emergente con las coordenadas e información del lugar, y los botones que permiten realizar distintas acciones en el lugar al usuario.
+\end{itemize}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=180pt]{./imgs/TripdroidMapaMenu.png}
+\caption{Mapa con Lugares}
+\end{center}
+\end{figure}
+
+\newpage
+\paragraph{ChallengeActivity:} Envía un desafío al usuario, en este caso, una pregunta acerca de si es correcta la relación entre un Lugar y un Tag.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=180pt]{./imgs/TripdroidDesafio.png}
+\caption{Desafío tipo Tag}
+\end{center}
+\end{figure}
+
+\paragraph{OptionsActivity:} Aquí el usuario puede aportar datos acerca del Lugar, en el caso de esta versión, sólo puede proponer nuevos tags para el Lugar, que son posteriormente validados mediante desafíos para otros usuarios.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=180pt]{./imgs/TripdroidOpciones.png}
+\caption{Agregar Tag}
+\end{center}
+\end{figure}
+
+\paragraph{HistoryActivity:} Aún no desarrollada completamente. Actividad que muestra la historia o más información sobre el lugar.
+
+\newpage
+Además, existen otros 2 packages en la aplicación: Utils y Model\\
+
+\paragraph{Model}
+
+Contiene clases que son Objetos que corresponden a las distintas Tablas de la Base de Datos.(Place, User, DesafioTag).\\
+
+\paragraph{Utils}
+
+Contiene clases que se usan para desarrollar funcionalidades de las clases principales.\\
+
+\begin{itemize}
+ \item \textbf{InteractiveArrayAdapter:} Clase que adapta los arreglos de las ListView de Android para que tengan un CheckButton.
+ \item \textbf{UserSession:} Maneja las sesiones de Usuario, contiene una instancia del objeto correspondiente al usuario actual en la aplicación.
+ \item \textbf{WebServiceJSON:} Clase que permite obtener y enviar parámetros en formato de archivo JSON al servidor.
+\end{itemize}
+
+\subsubsection{Servidor}
+
+El Servidor de la aplicación corresponde a un servidor gratuito de Google App Engine, donde se tienen los datos de los usuarios, lugares y desafíos y los distintos métodos para obtener dichos datos desde la aplicación cuando se requiera.\\
+
+El modelo de datos es el siguiente:\\
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=220pt]{./imgs/ModeloDatos.png}
+\caption{Agregar Tag}
+\end{center}
+\end{figure}
+
+Y los métodos que tiene el Servidor son los siguientes: (todos los métodos reciben parámetros vía GET y retornan texto en formato JSON según lo que se requiera)\\
+
+\begin{itemize}
+\item \textbf{votaruntag():} Recibe como parámetro un tag y la respuesta del usuario al desafío asociado a ese tag (Sí o No) y le suma un punto al campo ‘correcto’ o ‘incorrecto’ de ese tag según corresponda.
+
+\item \textbf{agregardesafiotag():} Al agregar un nuevo tag, éste método lo recibe como parámetro y crea el desafío asociado a la combinación lugar/tag/usuario, verificando que no exista previamente.
+
+\item \textbf{obtenerdesafiotag():} Retorna un desafío al azar entre todos los desafíos que no hayan sido propuestos por el usuario que invoca el método. Esto es para generar la pregunta de la actividad del desafío.
+
+\item \textbf{obtenertags():} Recibe como parámetro un lugar, y retorna los tags asociados al mismo.
+
+\item \textbf{administrartags():} Retorna una lista de todos los desafíos de tags pendientes, junto con los votos que han recibido.
+
+\item \textbf{agregarnuevotag():} Recibe como parámetro un tag que el administrador haya chequeado como correcto, luego, agrega este tag al lugar correspondiente y borra el desafío asociado a dicho tag.
+
+\item \textbf{registrar():} Recibe como parámetros todos los datos del formulario de registro del usuario, y en caso de no existir un usuario con el mismo username, o email, lo registra en el sistema.
+
+\item \textbf{login():} Recibe como parámetros el username y el password, verifica que la combinación sea correcta y le permite ingresar a la aplicación.
+
+\end{itemize}
+
+\subsection{Instalación}
+
+La aplicación consiste en un archivo llamado ''Tripdroid.apk`` a continuación se describen los pasos a seguir para instalarla, y los requisitos que debe cumplir el equipo.\\
+
+La aplicación ha sido probada en los siguientes equipos:\\
+
+\begin{itemize}
+ \item Optimus One P500
+ \item Xperia Mini X10
+ \item Galaxy Mini S5570
+ \item Nexus One
+\end{itemize}
+
+\subsubsection{Requisitos para Instalar}
+
+Se debe tener activada la instalación de aplicaciones de orígnes desconocidos en el equipo, en:\\
+
+Configuraciones $\rightarrow$ Aplicaciones $\rightarrow$ Orígenes Desconocidos\\
+
+Además se debe contar con un File Manager para leer el .apk en el equipo, como por ejemplo, el Linda Manager, ya que la aplicación aún no está publicada en el Android Market.\\
+
+\subsubsection{Instalación}
+
+Se debe buscar el .apk en el File Manager y seleccionar la opción de instalarlo en el equipo.\\
+
+Al instalarse, la aplicación solicitará los siguientes permisos:\\
+
+\begin{itemize}
+ \item Acceder a Su Ubicación, localización GPS detallada.
+ \item Almacenamiento (Modificar o eliminar contenido de la tarjeta de memoria).
+ \item Comunicación por Red (Acceso a Internet).
+ \item Herramientas del Sistema (Impedir que el teléfono entre en modo inactivo).
+\end{itemize}
+
+Se debe aceptar todo, haciendo click en Instalar.
+
+\subsubsection{Requisitos para Utilizar la Aplicación}
+
+Se debe usar internet vía Wi-Fi (es decir, la opción de Red Inalámbrica debe estar habilitada). Y además desactivar el GPS, ya que por ahora la aplicación toma la ubicación actual a traves del Wi-Fi.
+
+\subsection{Prueba con Usuarios}
+
+Luego de elaborar la versión Alfa de la aplicación, éste fue mostrado a los usuarios utilizando un móvil Xperia Mini X10, mediante el cual probaron la aplicación, realizando las siguientes tareas:\\
+
+\begin{itemize}
+ \item Registrarse en la aplicación
+ \item Visualizar el mapa
+ \item Buscar un lugar cercano a su ubicación actual
+ \item Visitarlo
+ \item Responder una validación
+ \item Agregar un Tag
+\end{itemize}
+
+
+Posteriormente se le realizó una encuesta de usabilidad a los usuarios, donde evaluaron distintas característas en una escala de 1 a 5 (desde "Muy en Desacuerdo" hasta "Muy de Acuerdo"), y luego se permitía entregar feedback libre sobre la aplicación.\\
+
+La encuesta fue realizada a 15 usuarios.\\
+
+\subsubsection{Resultados Encuesta}
+
+La escala fue normalizada de la siguiente forma:
+
+\begin{itemize}
+\item Muy en Desacuerdo : 1
+\item En desacuerdo: 2
+\item Neutro: 3
+\item De acuerdo: 4
+\item Muy de Acuerdo: 5
+\end{itemize}
+
+A continuación se muestran las preguntas de la encuesta en el orden en que fueron realizadas junto con el promedio de las respuestas de los encuestados junto a cada una.\\
+
+\begin{enumerate}
+\item La aplicación es fácil de usar \textbf{3,5}
+\item Es fácil encontrar la información deseada \textbf{3,3}
+\item Las distintas opciones funcionan correctamente \textbf{3,1}
+\item Las velocidad de la aplicación es adecuada \textbf{3,4}
+\item El uso del color es aceptable \textbf{3,4}
+\item El diseño general de la aplicación es apropiado \textbf{3,2}
+\item La organización de la información de la aplicación es apropiada \textbf{3,5}
+\item El contenido de la aplicación es relevante \textbf{3,2}
+\item La interfaz de la aplicación es placentera \textbf{3,2}
+\item La aplicación tiene todas las funcionalidades esperadas \textbf{3}
+\item La aplicación tiene todas las capacidades esperadas \textbf{3}
+\item ¿Cómo califica globalmente la aplicación analizada? \textbf{3,2}
+
+\item Promedio Total: \textbf{3,2}
+\end{enumerate}
+
+Como se puede observar, todos los resultados están entre 3 y 4, es decir, entre Neutro y De Acuerdo, lo que arroja el siguiente gráfico:\\
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=200pt]{./imgs/encuesta.png}
+\caption{Promedio obtenido en cada pregunta de la encuesta}
+\end{center}
+\end{figure}
+
+
+\subsubsection{Feedback Usuarios}
+
+Comentarios varios de los usuarios que probaron la aplicación y respondieron la encuesta, ordenados por los que se repitieron (o muy similares) más frecuentemente:\\
+
+\begin{itemize}
+\item Que los desafíos sean del lugar que visito (9 personas)
+\item Permitir agregar nuevos lugares (8 personas)
+\item Arreglar el focus del click en la ventana del lugar(8 personas)
+\item Que no sea sólo landscape (8 personas)
+\item Agregar búsqueda por tags (6 personas)
+\item Que estén todos los lugares disponibles y la experiencia sirva para otra cosa (6 personas)
+\item Botón para centrar el mapa (6 personas)
+\item Tener familia de íconos propios de la app (5 personas)
+\item Asociarlo a redes sociales(5 personas)
+\item No se distingue bien en el desafío la parte de lugar::tag(4 personas)
+\item Poner los Tags en Info en vez de la ventana emergente, o en ambos lugares. (3 personas)
+\item Revisar lugares que visité (2 personas)
+\item Revisar lugares que visitaron otros usuarios (2 personas)
+\item Poner foto del lugare o ver galería de fotos de un lugar (2 personas)
+\item Desbloquear ''easter eggs'' al ganar experiencia (2 personas)
+\item Ejemplos del relleno en campos de texto
+\item Menú Inicial que de Contexto
+\item Pasar del registro directo a la app
+\item Guardar username y pass
+\item Texto de las ventanas emergentes más lento
+\end{itemize}
+
+\subsubsection{Análisis de Resultados}
+
+Se puede apreciar que en general la evaluación de la aplicación es entre Neutro y De Acuerdo, más cercana al valor Neutro, lo cuál era esperable, ya que se hizo una versión de la aplicación bastante básica para empezar a probar. De hecho, sólo 3 usuarios de los encuestados evaluaron negativamente la aplicación globalmente.\\
+
+En general, el principal problema con que se toparon los usuarios, fue que las validaciones no fueran relacionadas directamente con el lugar que visitaban, sin embargo, la gran mayoría no tuvo inconveniente alguno en comprender intuitivamente lo que era el desafío en sí y que se utilizaba para validar, de hecho, varios de ellos mencionaron que era algo similar a lo que hacen varias aplicaciones en distintas redes sociales mientras probaban la aplicación.\\
+
+Por último, se aprecia que la evaluación más baja es en el item ''La aplicación tiene todas las funcionalidades esperadas`` lo cuál es lógico puesto que se trata de una versión con el mínimo de funcionalidades. Esto es positivo, ya que los usuarios en general al ver la aplicación preguntaban por funcionalidades que les gustaría que tuviese o que creían que existían, las cuales se pueden ver en el resumen del feedback recibido, y permiten tener una guía para elaborar la versión Beta.\\
+
+\newpage
+\section{Tripdroid Alfa 2.2}
+
+En la versión Alfa 2.2 se agregaron las siguientes características:\\
+
+\begin{itemize}
+ \item Desafíos para verificar capacidad del usuario para validar, por lo mismo, hay suma o resta de experiencia según como se responda.
+ \item Lugares nuevos para el usuario que aparecen al llegar a cierto nivel de experiencia, como beneficio luego de responder tareas de validación.
+ \item Distinción en íconos de distinto color para lugares asociados a servicios.
+ \item Opción de agregar el lugar en que se encuentra actualmente el usuario.
+ \item Se muestra la ubicación actual del usuario en el mapa, además de añadir un botón para centrar el mapa en ese lugar.
+ \item Mejoras en la interfaz de los lugares, destacando los tags.
+\end{itemize}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=180pt]{./imgs/TripdroidMapa2.png}
+\caption{Nueva interfaz del mapa.}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=180pt]{./imgs/TripdroidLugar.png}
+\caption{Nueva interfaz del menú del lugar.}
+\end{center}
+\end{figure}
+
+\newpage
+\section{Alternativas de Desarrollo a Futuro}
+
+\subsection{Funcionalidades para el Usuario}
+
+Se indicarán una serie de funcionalidades relativas a los distintos elementos de la aplicación que podrían ser agregadas a futuro.\\
+
+\begin{enumerate}
+
+\item \textbf{Buscar Lugares}
+
+Además de poder ver la información de los lugares cercanos, el usuario tendrá la opción de buscar lugares de acuerdo a 2 criterios:\\
+
+\begin{itemize}
+\item \textbf{Por Tag:} De modo de recibir una lista de lugares Culturales con su ubicación que correspondan a los tags que está buscando.
+\item \textbf{Por Ubicación:} Buscar una ubicación en el mapa (con algún método a determinar que provea el mapa de Google Maps), y poder ver los lugares de cualquier tipo que hay cerca de la dirección buscada.
+\end{itemize}
+
+\item \textbf{Información de Lugares}
+
+Añadir la opción de leer información sobre el lugar, la cual corresponda a una reseña sobre el lugar en sí, sus características, historia, lo que se puede encontrar en él, etc.\\
+
+\item \textbf{Comentar y Evaluar}
+
+La idea es que en todo lugar que el usuario visite, éste pueda realizar comentarios sobre el mismo, y además evaluarlo de acuerdo a una escala a determinar.\\
+
+\item \textbf{Recomendación de Lugares}
+
+Recomendar lugares al usuario de acuerdo a su ubicación actual o lugares que haya visitado.
+
+\item \textbf{Capas de Lugares}
+
+Que los usuarios puedan definir capas de lugares, de acuerdo a los tags, por ejemplo, ver en el mapa sólo los restaurantes, o sólo los pubs, etc.
+
+\item \textbf{Corregir Datos de Lugares}
+
+El usuario siempre que visite un lugar tendría la opción de denunciar si la información, los tags, o la ubicación del lugar son incorrectos.\\
+
+\item \textbf{Tareas de Validación de Ubicación}
+
+El objetivo de esta validación, es que el usuario confirme la ubicación de un lugar. Existen 2 formas de solicitar esta tarea:\\
+
+La idea es que en la base de datos de lugares, la aplicación tendrá una serie de lugares que aún están pendientes de ser validados.\\
+
+Cuando el usuario utilice la aplicación y \textbf{se encuentre cercano a uno de los lugares pendientes} a ser validados, se le solicitará al usuario responder una pregunta, la cuál será confirmar si existe el lugar, por ejemplo, una pregunta del tipo "hay una plaza cerca de donde te encuentras?", donde el usuario tiene las alternativas de decir que sí, que no, o que no sabe (es decir, no está obligado a responder).\\
+
+Otra variante de esta validación es que se le solicite al usuario \textbf{validar si existe un lugar lejano a su ubicación actual}. En este caso, el desafío quedaría disponible para que el usuario lo pueda resolver en días posteriores, y al estar en la ubicación solicitada por el desafío tendrá las opciones de decir que el lugar sí existe, o no lo hace, o bien si desea no responder la pregunta.\\
+
+El objetivo de esto último es evitar que un usuario agregue un lugar y el mismo lo valide constantemente con varias cuentas, debe existir una variante de este desafío que solicite al usuario ir a un lugar lejano a su ubicación actual para verificar una ubicación, obviamente esta validación recibirá un premio mayor.\\
+
+De esta forma, si se tiene dudas sobre algún lugar, se puede enviar la validación de verificar un lugar lejano a un gran número de usuarios, y basta con que unos pocos lo realicen, ya que es poco probable que alguien recorra una distancia razonable y mienta a la hora de validar.\\
+
+\item \textbf{Tareas de Validación de Información}
+
+El objetivo de esta validación es saber si la información que agregan los usuarios a los lugares es correcta y comprensible.\\
+
+La forma de realizarse sería equivalente a la validación de tags, pero mostrando una pregunta del tipo "la siguiente información se entiende?" o bien "la siguiente información es verídica?" y mostrar un párrafo agregado por otro usuario y el lugar al que corresponde, con las alternativas afirmativa, negativa, y pasar la pregunta.\\
+
+\item \textbf{Medallas}
+
+Otra forma de entregar beneficios a los usuarios, y que también debe ser mejor definida, es entregar medallas a éstos de acuerdo a los lugares visitados y al contexto, es decir, algún usuario podría tener una medalla que indique que ha visitado muchos museos, o que ha resuelto muchos desafíos, etc.\\
+
+Las medallas podrían ser canjeables por otros beneficios como el acceso a información y el acceso a otras features de la aplicación.\\
+
+\item \textbf{Asignación de Premios}
+
+Un tema importante, es el número de premios o beneficios que se les dará a los usuarios al resolver desafíos o realizar aportes, la idea es que el premio sea proporcional a la dificultad del desafío.\\
+
+Queda pendiente establecer un orden de las validaciones, desde la más fácil a la más difícil para determinar cuáles recibirán más beneficios, a priori, un orden posible del más difícil (más beneficios), al más fácil sería como sigue:\\
+
+\item \textbf{Interacción con otros usuarios}
+
+Permitir agregar otros usuarios como amigos y compartir información personal y/o relativa al uso de la aplicación con ellos. Por ejemplo:
+
+\begin{itemize}
+
+\item Mostrar el número de personas que ha visitado un lugar, especificando los amigos que lo han visitado.
+\item Que la aplicación avise en caso de que un amigo haya visitado el mismo lugar muy recientemente.
+\item Implementar un chat con usuarios que se encuentren en el mismo lugar.
+\item Permitir canjear premios, como las medallas descritas anteriormente, por información de otros lugares, o intercambiarlos con otros usuarios
+
+\end{itemize}
+
+\item \textbf{Compartir en Redes Sociales}
+
+Compartir distintas acciones realizadas en la aplicación a través de redes sociales (por ejemplo, el haber visitado algún lugar)
+
+\item \textbf{Más Desafíos:}\\
+
+Verificar Ubicación (a mayor distancia, mayor premio)
+Validar Información
+Validar Tags
+
+Además existen premios para los aportes que realiza el usuario a la información de la aplicación, pero estos deberían ser asignados una vez que hayan sido validados los respectivos aportes.\\
+
+\item \textbf{Plug-In Imágenes}
+
+Permitir que el usuario asigne una imagen (foto) tomada en un lugar, a ese lugar, y poder ver las imágenes que ha aportado el resto de los usuarios.\\
+
+\item \textbf{Plug-In de Dibujo}
+
+Como propuso uno de los usuarios encuestados, sería interesante agregar un Plug-In que permita dibujar sobre el mapa de la aplicación.\\
+
+La forma en que se hace esto, es que al dibujar sobre el mapa, se guarda el dibujo en una sola capa, y se puede seguir trabajando sobre el mapa sin problemas, teniendo varias capas de dibujo.\\
+
+En fases posteriores del proyecto, se puede implementar que existan capas colaborativas de dibujos sobre el mapa.\\
+
+\item \textbf{Plug-In Rutas}
+
+Otra funcionalidad interesante, sería agregar un Plug-In que entregue al usuario una imagen del mapa con la ruta de los lugares que ha visitado, y que ésta sea exportable en distintos formatos.\\
+
+\end{enumerate}
+
+
+\subsection{Sistema de Validación}
+
+\begin{enumerate}
+
+\item \textbf{Automatización de los Criterios de Validación}
+
+Existen al menos dos formas en que la información puede ser validada en un sistema como este, ya sea porque un administrador la aprueba como valida, revisando uno a uno las respuestas obtenidas para cada tag, o bien automáticamente valida como correctas o incorrectas todas aquellas que tengan, por ejemplo, un porcentaje superior al 90\% de respuestas en una de estas dos alternativas.\\
+
+A continuación se describen subjetivamente criterios que se pueden aplicar en general para automatizar la validación de información, ya que la forma en que se defina depende en gran medida del tipo de aplicación o del uso de la misma en la práctica, para finalmente poder automatizar los criterios, y así evitar usar una validación centralizada.\\
+
+En el caso de una validación por parte del administrador, éste puede tener conocimiento de las respuestas de los usuarios en un desafío determinado, para poder determinar si valida la información o no, luego, por ejemplo, si cierta información ha sido aprobada como valida por el 99\% de los usuarios que respondieron el desafío, es muy probable que el administrador la acepte como válida, luego, este proceso se puede automatizar. No obstante, el criterio del administrador es útil en casos de que la validación del desafío esté dividida, por ejemplo, si un 60\% de los usuarios cree que cierta información es válida, es una cantidad poco razonable como para automatizar esta respuesta, sin embargo, si se tiene un administrador del sistema, que se sabe que es confiable, se asume que averiguará si el tag corresponde o no antes de aceptarlo como válido en el sistema, asimismo, puede ir directamente a verificar la certeza de ciertos tags sin necesidad de esperar respuestas de los usuarios.\\
+
+Así, en los casos que son claros como el primero mencionado, se puede automatizar la validación. Para esto, se debe establecer algún criterio en el cual se involucre: el número de usuarios que respondieron el desafío, la respuesta que dio al desafío la mayoría de los usuarios (información válida o inválida), y el porcentaje de usuarios que optó por dicha respuesta.\\
+
+Asimismo, también se puede fijar un criterio de acuerdo al número total de usuarios de la aplicación, es decir, si son 1000 usuarios, un 5\% que responda un desafío es razonable, sin embargo, si son 10 mil o 100 mil, probablemente ese porcentaje necesario deba ser menor, debido a que difícilmente 500 o 5000 usuarios distintos visiten un mismo lugar utilizando la aplicación.\\
+
+\item \textbf{Asignar Beneficios y Penalizaciones Según Dificultad}
+
+Como se describió, en las versiones a desarrollar, los beneficios recibidos por los usuarios son siempre los mismos al responder una tarea de validación.\\
+
+Sin embargo, es bastante razonable que los beneficios o penalizaciones recibidas dependan de la dificultad de la validación, ya que por ejemplo, en el caso de la aplicación a desarrollar, si se tuviesen validaciones sobre los lugares, y ésta consistiera en encontrar un cajero automático que otro usuario señaló que estaba cercano a un lugar, es bastante comprensible que se entregue una respuesta errónea si el usuario efectivamente no pudo encontrar el cajero, pese a que existe. Sin embargo, si se pregunta a un usuario si es correcto el tag ''plaza`` para la Plaza de Armas, asumiendo que es una información ya validada como correcta en el sistema, difícilmente será mal contestada la tarea de validación asociada a este tag, por lo cual se considera razonable penalizar a los usuarios que respondan mal el desafío, ya sea reduciendo su acceso a información en el sistema u otra forma.\\
+
+En general, se puede considerar que un desafío de validar si la ubicación de cierto lugar es correcta es más complejo que un desafío de validar un tag.\\
+
+\item \textbf{Otras Consideraciones de Seguridad}
+
+Otra posibilidad de un mal uso de la aplicación, además de las señaladas, es que un usuario aporte y valide información inválida.\\ Supongamos que un usuario agregue un lugar falso que se encuentra cerca de su casa, o un lugar donde esté constantemente, luego, utilizando otro usuario en la aplicación podría pasar varias veces por el mismo lugar y marcarlo como válido. Una solución a esto, es enviarle el desafío de validar si el lugar existe a un usuario que se encuentre lejano a ese lugar, o que no lo visite habitualmente, dándole la opción de viajar hasta el lugar y luego responder el desafío, el cual, por supuesto, conllevaría un mayor beneficio para el usuario si decide realizarlo. En este caso, se asume que difícilmente un usuario va a viajar para validar un lugar y mentir acerca del mismo, así que se le asocia un mayor beneficio dentro de la evaluación de la validez de la ubicación del lugar, a la respuesta del usuario lejano.\\
+
+\item \textbf{Usuarios Anónimos}
+
+Otra opción a considerar dentro de la aplicación es la de tener usuarios anónimos en ella, es decir, que puedan acceder a ella sin necesidad de registrarse.\\
+
+Para ello, se debe considerar que si un usuario no está registrado, a priori no se almacenará el puntaje u otros beneficios que obtenga, luego, no tendría motivación para validar en forma honesta la información, por lo que hay que decidir como se comportará el sistema de validación respecto a este tipo de usuarios.\\
+
+En las versiones Alfa 2.1 y Alfa 2.2 se tiene el acceso restringido solamente a usuarios registrados, sin usuarios anónimos, no obstante, a continuación se explican 3 posibles formas de integrar usuarios anónimos al sistema y cuál es la más adecuada para esta aplicación:\\
+
+\begin{itemize}
+ \item \textbf{Ninguno:} Obligar a registrarse para usar la aplicación. No parece una buena idea, ya que el usuario no puede hacerse una idea de qué puede hacer con la aplicación y si le será útil. Además como se vio, existen muchas aplicaciones similares, por lo que lo más probable es que busque otra que no requiera registro.\\
+ \item \textbf{Acceso Limitado:} Los usuarios anónimos tienen acceso a todas las funcionalidades del sistema, luego, pueden visitar lugares y ganar puntaje a través de los desafíos. Aquí existen 2 opciones para motivar a los usuarios a registrarse:\\
+  \begin{itemize}
+  \item Para conservar el puntaje y los beneficios obtenidos, los usuarios anónimos deben registrarse en el sistema.
+  \item Entregar al usuario una cantidad limitada de lugares validados, por ejemplo 20, que sirvan de publicidad para la aplicación, y además unos 5 que pueda desbloquear. Al llegar a ese limite, se invita al usuario a registrarse si desea obtener nuevos lugares.
+  \end{itemize}
+ Además, es conveniente que por el mismo hecho de no estar registrados, reciban más desafíos al usar la aplicación, y de esta manera, en la aplicación se indique que al registrarse se recibirán menos desafíos.
+\end{itemize}
+
+La opción del acceso limitado es la más razonable para esta aplicación, ya que como se señaló, no darle acceso a usuarios anónimos no es buena idea, debido a que existen alternativas que no requieren registros.\\
+
+Finalmente, la mayor ventaja de dar acceso limitado, aunque con mayor número de desafíos a los usuarios anónimos, es que éstos podrán observar todas las capacidades de la aplicación y motivarlos realmente a utilizarla, además de contribuir indirectamente a la misma mediante el control de calidad que efectúen al responder desafíos, o incluso si aportan información que resulta ser validada.\\
+
+\end{enumerate}
+
+
+\newpage
+\section{Fases Posteriores}
+
+Fuera del alcance del Trabajo Dirigido, se pretende seguir con el proyecto de la siguiente manera:\\
+
+\begin{itemize}
+
+\item Añadir más lugares a la base de datos de la aplicación, con sus respectivos tags validados como correctos e incorrectos.\\
+
+\item Difundir la aplicación para tener un grupo de usuarios utilizándola, y obtener más feedback, en paralelo a ello, continuar con el desarrollo.\\
+
+\item Terminar una versión Alfa 2.3 de la aplicación basada en los resultados de este Trabajo Dirigido y el feedback obtenido de los usuarios.\\
+
+\item El objetivo es dar a conocer esta versión a empresas que apoyen ideas de innovación y pueda interesarles proyecto (Cursor, CORFO, etc.), o bien buscar trabajos de investigación relacionados con el área donde la aplicación pueda ser útil como ejemplo de uso de control de calidad colaborativo. Para ello se pretende participar con la aplicación en los siguientes concursos:\\
+
+\begin{itemize}
+\item Concurso Kickstart de Innovación http://islae2.cl/.
+\item Segundo concurso de Cursor de aplicaciones para Android desarrolladas por estudiantes.
+\item Concurso "Smart Apps Incubator Project" de LG.
+\end{itemize}
+
+\item Diseñar, en conjunto con un profesional del área, un plan de negocios, que cubra más o menos la siguiente idea:\\
+
+\subsection{Plan de Negocios}
+
+La aplicación, para existir, necesita financiar un Servidor donde pueda permanecer alojada la información que utiliza, y personal de alrededor de 5 personas para mantener la aplicación, en cuanto a observar posibles errores que puedan ocurrir y administrar la información que entreguen las personas, en términos de aceptarla o rechazarla de a acuerdo a la cantidad de personas que la hayan evaluado favorablemente.\\
+
+Para obtener el financiamiento, se proponen 3 ideas:\\
+
+\begin{itemize}
+ \item Vender espacios para auspicios dentro de la aplicación misma, de acuerdo al número de usuarios que lo clickean, o ven el auspicio en el caso de la aplicación.
+
+ \item También se puede vender datos de información a los usuarios si lo desean, ya sea para activar alguna feature o bien porque desean tener toda la información de la ciudad en caso de que la estén visitando por un breve período de tiempo.
+
+ \item Vender acceso a toda la información de la ciudad a alguien que lo necesite, por ejemplo, para escribir un libro, o bien, generar estadísticas que pueden contribuir a otras instituciones, por ejemplo, el número de personas que visita cada plaza de Santiago puede ser útil de conocer para el Municipio.
+\end{itemize}
+\end{itemize}
+
+\subsection{Propuesta Versión Alfa 2.3}
+
+Se quiere añadir gamification a Tripdroid, de modo que sea una aplicación de entretenimiento, a la vez que conserve el objetivo de aportar información de calidad de lugares de interés.\\
+
+Para ello, se desea en primer lugar implementar las funcionalidades D.1.11 y D.1.12 propuestas, es decir que los usuarios interactúen entre sí y puedan compartir información relativa a la aplicación en las redes sociales, esto se haría de la siguiente manera.
+
+Se desea añadir nuevos premios a la aplicación, en reemplazo del puntaje, que en este caso serían llamados Items. Dichos items pueden ser relativos al lugar visitado, como se propuso en la sección D.1.9, con las siguientes características:\\
+
+\begin{itemize}
+ \item Existen distintos tipos de Items.
+  \item La combinación de un conjunto de Items permite al usuario generar un Objeto creado con estos Items.
+  \item Este Objeto permitiría al usuario:\\
+  \begin{itemize}
+  \item Canjearlo para obtener nuevos lugares en el mapa.
+  \item Desbloquear información de un lugar, o bien la opción de visitarlo (este lugar aparecería marcado en el mapa pero sin acceso a él o a su información).
+  \item Desbloquear algún Plug-In de la aplicación.
+  \end{itemize}
+  Esto está basado en la forma de desbloquear nuevas características, lugares, o información en distintos juegos RPGs sociales, tales como Dofus o Ragnarok.
+  \item Los usuarios podrán intercambiar items entre sí, ya sea mediante la aplicación, dejando los items en algún lugar para que otro usuario los recoja, o bien mediante Bluetooth o algún otro sistema similar.
+  \item Todas estas acciones, la obtención de un item, el desbloqueo de un lugar o feature deben ser compartibles en Facebook o Twitter.
+\end{itemize}
+
+Aún se debe analizar si efectivamente reemplazar el sistema de experiencia por la obtención de items, o bien utilizar la misma para canjearla por items. Además, también existe la opción de permitir que los usuarios puedan ver, por ejemplo, si hay otros usuarios visitando el mismo lugar que ellos para intercambiar un item, tener amigos dentro de la misma aplicación para este propósito, etc.
+
+
+\end{document}
