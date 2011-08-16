@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.8.25)  15 AUG 2011 03:58
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.8.25)  15 AUG 2011 18:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1554,12 +1554,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 1164--1165
  []
 
 [40]
-Underfull \hbox (badness 10000) in paragraph at lines 1168--1169
+Underfull \hbox (badness 10000) in paragraph at lines 1166--1167
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1173--1174
+Underfull \hbox (badness 10000) in paragraph at lines 1170--1171
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1175--1176
 
  []
 
@@ -1581,7 +1586,7 @@ nts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/pub
 lic/amsfonts/cm/cmsl10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
 s/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10
 .pfb>
-Output written on InformeTripdroid.pdf (42 pages, 734627 bytes).
+Output written on InformeTripdroid.pdf (42 pages, 735042 bytes).
 PDF statistics:
  192 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

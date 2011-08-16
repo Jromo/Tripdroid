@@ -1,0 +1,105 @@
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%\documentclass[runningheads]{llncs}
+%\documentclass[10pt,letterpaper,twocolumn]{article}
+\documentclass{sig-alternate}
+%\documentclass{acm_proc_article-sp}
+
+\setlength{\pdfpagewidth}{8.5truein}
+\setlength{\pdfpageheight}{11.0truein}
+
+% packages
+\usepackage{xspace}
+\usepackage{ifthen}
+\usepackage{amsbsy}
+\usepackage{amssymb}
+\usepackage{balance}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{needspace}
+\usepackage{microtype}
+\usepackage{bold-extra}
+\usepackage{comment}
+\usepackage[spanish]{babel} 
+\usepackage[utf8]{inputenc}
+
+% constants
+\newcommand{\Title}{Tripdroid: Collaborative Georeferencing Mobile Devices}
+\newcommand{\TitleShort}{\Title}
+\newcommand{\Authors}{Jorge Romo, Jeremy Barbay}
+\newcommand{\AuthorsShort}{J.Romo, J.Barbay}
+
+% references
+\usepackage[colorlinks]{hyperref}
+\usepackage[all]{hypcap}
+\setcounter{tocdepth}{2}
+\hypersetup{
+	colorlinks=true,
+	urlcolor=black,
+	linkcolor=black,
+	citecolor=black,
+	plainpages=false,
+	bookmarksopen=true,
+	pdfauthor={\Authors},
+	pdftitle={\Title}}
+% lists
+\newenvironment{bullets}[0]
+	{\begin{itemize}}
+	{\end{itemize}}
+
+
+\begin{document}
+
+\title{\Title}
+
+\author{\Authors \\[1mm]
+Departamento de Ciencias de la Computación (DCC), Universidad de Chile, \\[1mm] From March 21 to August 12, 2011
+}
+
+\maketitle
+
+\section{Introduction}
+
+Further development of Tripdroid, an georreferencing application that aims to give information of places of interest to users, which can be tourism or simply seeing new places or locations of services such as ATMs. To do this, users can provide information either tags that define a place or new places. To ensure the reliability of this information, each time a user visits a site, must solve some validation task, which is to answer about the veracity of the information provided by another user, or a challenge to verify that the user is answering correctly, then the user gets access to more information (in this case, places on the map), if he's answering right. By this way, you get a collaborative validation of existing information in the application.\\
+
+It's also estimated that the validation of collaborative information will allow to have a greater amount of information, or more frequently updated than a centralized validation by administrators who add and validate the information.
+
+\section{Objectives}
+
+Determine if this is a valid orientation for prospective users of the application, through doing usability tests to verify that the validation system is easy to understand without affecting the use of the application.
+
+\section{Work Performed}
+
+A new version of the application was done. Wich has implemented the tag's validation system, the way already described, so a typical use case of Tripdroid is as follows:\\
+
+\begin{itemize}
+ 
+ \item An user, Arturo, uses the application from the ''Plaza de Armas de Santiago'', wich has the tags ''plaza``, ''estatua`` and ''artistas``.
+ \item Arturo adds the tag ''fuente`` to ''Plaza de Armas''.
+ \item The tag doesn't appear in the system yet, but it's added to the database as non validated information.
+ \item Another user, Beatriz, visits ''Plaza de Armas'', while using the application, gets a validation task wich ask her if ''fuente'' is a valid tag for ''Plaza de Armas''. She could answer Yes, No, or Skip.
+ \item After answering, Beatriz marks ''Plaza de Armas'' as visited in the application, and she wins 3 experience points.
+ \item The same validation task, created from Arturo's tag, is sent to multiple users who visit ''Plaza de Armas''.
+ \item System Administrator notes that about 90\% of users who answered the validation task of the ''source'' tag, indicated that it was correctly associated with ''Plaza de Armas'',so he add this tag to the validated tags for this place.
+ \item Therefore, the ''fuente'' tag becomes part of the ''Plaza de Armas'' tags, then, it becomes validated information, and in this case is correct, and will be visible to users who visit the ''Plaza de Armas'' from now on.
+\end{itemize}
+
+This version was tested with users to get feedback about it, with positive results.\\
+
+Links to sources in Github and an illustrative video:
+\begin{itemize}
+\item https://github.com/Jromo/Tripdroid
+\item http://www.youtube.com/watch?v=eMmNDe2L-lM
+\end{itemize}
+
+\section{Proposed Extensions}
+
+\begin{itemize}
+\item Adding new places to the application for further user testing.
+   \item Make a new version that includes gamification, by adding items like rewards to users for validating properly, wich could use these items to unlock new locations, or information about them.
+   \item Establish a network of user interaction within the application, so they can exchange items, or access to places.
+   \item Add the option of sharing these actions in the application on popular social networks.
+\end{itemize}
+
+
+\end{document}

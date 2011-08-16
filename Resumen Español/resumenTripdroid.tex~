@@ -1,0 +1,119 @@
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%\documentclass[runningheads]{llncs}
+%\documentclass[10pt,letterpaper,twocolumn]{article}
+\documentclass{sig-alternate}
+%\documentclass{acm_proc_article-sp}
+
+\setlength{\pdfpagewidth}{8.5truein}
+\setlength{\pdfpageheight}{11.0truein}
+
+% packages
+\usepackage{xspace}
+\usepackage{ifthen}
+\usepackage{amsbsy}
+\usepackage{amssymb}
+\usepackage{balance}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{needspace}
+\usepackage{microtype}
+\usepackage{bold-extra}
+\usepackage{comment}
+\usepackage[spanish]{babel} 
+\usepackage[utf8]{inputenc}
+
+% constants
+\newcommand{\Title}{Tripdroid: Georreferenciación Colaborativa en Dispositivos Móviles}
+\newcommand{\TitleShort}{\Title}
+\newcommand{\Authors}{Jorge Romo, Jeremy Barbay}
+\newcommand{\AuthorsShort}{J.Romo, J.Barbay}
+
+% references
+\usepackage[colorlinks]{hyperref}
+\usepackage[all]{hypcap}
+\setcounter{tocdepth}{2}
+\hypersetup{
+	colorlinks=true,
+	urlcolor=black,
+	linkcolor=black,
+	citecolor=black,
+	plainpages=false,
+	bookmarksopen=true,
+	pdfauthor={\Authors},
+	pdftitle={\Title}}
+
+\def\chapterautorefname{Chapter}
+\def\appendixautorefname{Appendix}
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Section}
+\def\figureautorefname{Figure}
+\def\tableautorefname{Table}
+\def\listingautorefname{Listing}
+
+
+% lists
+\newenvironment{bullets}[0]
+	{\begin{itemize}}
+	{\end{itemize}}
+
+
+\begin{document}
+
+\title{\Title}
+%\titlerunning{\TitleShort}
+
+\author{\Authors \\[1mm]
+Departamento de Ciencias de la Computación (DCC), Universidad de Chile, \\[1mm]21 de Marzo al 12 de Agosto del 2011
+}
+%\authorrunning{\AuthorsShort}
+
+\date{21 de Marzo al 12 de Agosto del 2011}
+
+\maketitle
+
+\section{Introducción}
+
+
+Continuación del desarrollo de Tripdroid, una aplicación de georreferenciación que tiene como objetivo obtener información de lugares de interés para los usuarios, el cuál puede ser turístico o simplemente para conocer nuevos lugares o la ubicación de servicios tales como cajeros automáticos. Para ello, los usuarios pueden aportar información ya sea tags que definan un lugar, o nuevos lugares. Para asegurar la confiabilidad de esta información, cada vez que un usuario visita un lugar, debe responer una tarea de validación, la cuál consiste en responder acerca de la veracidad de la información aportada por otro usuario, o bien un desafío para verificar que el usuario está respondiendo en forma correcta, luego, el usuario recibe acceso a más información (en este caso lugares en el mapa), al responder correctamente. De este modo, se logra una validación colaborativo de la información existente en la aplicación.\\
+
+Además, se estima que la validación de información colaborativa permitirá tener una mayor cantidad de información o bien más frecuentemente actualizada que con una validación centralizada mediante administradores que agreguen y validen la información.
+
+\section{Objetivos}
+
+Determinar que esta es una orientación válida para los posibles usuarios de la aplicación, mediante pruebas de usabilidad para comprobar que resulta fácil de comprender el sistema de validación sin afectar el uso de la aplicación.
+
+\section{Trabajo Realizado}
+
+Se elaboró una nueva versión de la aplicación. la cual tiene implementado el sistema de validación de tags, de la forma ya descrita, de modo que un caso típico de uso de Tripdroid sea como sigue:\\
+
+\begin{itemize}
+ \item Un usuario, Arturo, utiliza la aplicación desde la Plaza de Armas. ''Plaza de Armas`` tiene los tags ''plaza``, ''estatua`` y ''artistas``.
+ \item Arturo agrega el tag ''fuente`` a la Plaza de Armas.
+ \item El tag aún no aparece en el sistema, pero es añadido a la Base de Datos como información aún no validada.
+ \item Otro usuario, Beatriz, visita la plaza de armas, al usar la aplicación, recibe una tarea de validación en la que se le pregunta si cree que el tag ''fuente`` es un tag válido para Plaza de Armas. Beatriz puede responder que este tag es correcto, incorrecto, o bien, pasar sin responder.
+ \item Luego de responder, Beatriz marca como visitada la Plaza de Armas en la aplicación, y aparece un mensaje que le indica que ha ganado 3 puntos de experiencia.
+ \item La misma pregunta de validación creada a partir del tag aportado por Arturo, es enviada a varios usuarios que visitan la Plaza de Armas
+ \item El Administrador del sistema observa que el alrededor del 90\% de los usuarios que respondió la validación del tag ''fuente``, indicaron que era correcto asociarlo a Plaza de Armas, agregará este tag a los tags validados para este lugar.
+ \item Por lo tanto, el tag ''fuente'' pasa a ser parte de los tags de Plaza de Armas, luego, pasa a ser información validada, y en este caso, es correcta, y será visible para los usuarios que visiten la Plaza de Armas de ahora en adelante.
+\end{itemize}
+
+Esta versión fue probada con usuarios para recibir feedback sobre la misma, con resultados positivos.\\
+
+Enlaces a fuentes en Github y video ilustrativo:
+\begin{itemize}
+\item https://github.com/Jromo/Tripdroid
+\item http://www.youtube.com/watch?v=eMmNDe2L-lM
+\end{itemize}
+
+\section{Propuestas de Extensiones}
+
+\begin{itemize}
+ \item Agregar nuevos lugares a la aplicación para realizar más pruebas con usuarios.
+  \item Elaborar una nueva versión que incluya gamification. Esto mediante agregar Items como recompensa a los usuarios por validar correctamente, los que les permitan desbloquear nuevos lugares, o información acerca de los mismos.
+  \item Establecer una red de interacción de usuarios dentro de la aplicación, de modo que puedan intercambiar items por otros, o bien acceso a lugares.
+  \item Añadir la opción de compartir estas acciones realizadas en la aplicación en las redes sociales más populares.
+\end{itemize}
+
+
+\end{document}
